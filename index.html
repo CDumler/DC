@@ -1,0 +1,380 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professionelle Personalberatung, die Unternehmen mit Top-Talenten verbindet."
+    />
+    <title>Elevate Search | Personalberatung</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                dark: "#0f172a",
+                ink: "#1e293b",
+                soft: "#f1f5f9",
+              },
+            },
+            boxShadow: {
+              soft: "0 12px 30px -18px rgba(15, 23, 42, 0.35)",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+      }
+
+      /* Subtile Tiefenwirkung im Hero-Bereich */
+      .hero-bg {
+        background-image: radial-gradient(
+            circle at 15% 20%,
+            rgba(148, 163, 184, 0.18),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 85% 15%,
+            rgba(99, 102, 241, 0.12),
+            transparent 40%
+          ),
+          linear-gradient(145deg, #0f172a 0%, #111d37 45%, #1e293b 100%);
+      }
+    </style>
+  </head>
+  <body class="bg-white text-brand-ink antialiased">
+    <!-- Header / Navigation -->
+    <header class="sticky top-0 z-40 border-b border-slate-200/70 bg-white/95 backdrop-blur">
+      <nav
+        class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 lg:px-8"
+        aria-label="Hauptnavigation"
+      >
+        <a href="#hero" class="text-lg font-semibold tracking-tight text-brand-dark">Elevate Search</a>
+
+        <button
+          id="menuButton"
+          type="button"
+          class="inline-flex items-center rounded-md border border-slate-300 px-3 py-2 text-sm font-medium text-brand-dark transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-dark/30 lg:hidden"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          Menü
+        </button>
+
+        <ul class="hidden items-center gap-8 text-sm font-medium text-slate-600 lg:flex">
+          <li><a class="transition hover:text-brand-dark" href="#about">Über uns</a></li>
+          <li><a class="transition hover:text-brand-dark" href="#services">Leistungen</a></li>
+          <li><a class="transition hover:text-brand-dark" href="#metrics">Ergebnisse</a></li>
+          <li><a class="transition hover:text-brand-dark" href="#testimonials">Referenzen</a></li>
+          <li><a class="transition hover:text-brand-dark" href="#contact">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-6 py-4 lg:hidden">
+        <ul class="space-y-3 text-sm font-medium text-slate-700">
+          <li><a class="block transition hover:text-brand-dark" href="#about">Über uns</a></li>
+          <li><a class="block transition hover:text-brand-dark" href="#services">Leistungen</a></li>
+          <li><a class="block transition hover:text-brand-dark" href="#metrics">Ergebnisse</a></li>
+          <li><a class="block transition hover:text-brand-dark" href="#testimonials">Referenzen</a></li>
+          <li><a class="block transition hover:text-brand-dark" href="#contact">Kontakt</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section id="hero" class="hero-bg relative overflow-hidden">
+        <div class="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
+          <div class="max-w-3xl">
+            <p
+              class="mb-6 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-slate-200"
+            >
+              Personalberatung
+            </p>
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Wir verbinden Unternehmen mit Top-Talenten.
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+              Wir begleiten wachstumsorientierte Unternehmen und leistungsstarke Fach- und
+              Führungskräfte bei strategischen Besetzungen mit nachhaltigem Erfolg.
+            </p>
+
+            <div class="mt-10 flex flex-wrap gap-4">
+              <a
+                href="#contact"
+                class="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-brand-dark shadow-soft transition hover:-translate-y-0.5 hover:bg-slate-100"
+                >Beratungsgespräch vereinbaren</a
+              >
+              <a
+                href="#services"
+                class="inline-flex items-center justify-center rounded-md border border-slate-300/40 bg-transparent px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                >Möglichkeiten ansehen</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div class="grid gap-12 lg:grid-cols-[1.35fr_1fr] lg:items-start">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Über uns</p>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
+              Verlässliche Partner für Executive- und Spezialisten-Rekrutierung.
+            </h2>
+            <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-600">
+              Elevate Search unterstützt Unternehmen, die Qualität, Diskretion und Tempo schätzen.
+              Wir verbinden Marktkenntnis mit einem kuratierten Netzwerk und liefern präzise
+              Besetzungen, die Teams und Karrieren langfristig stärken.
+            </p>
+          </div>
+
+          <div class="grid gap-4">
+            <article
+              class="rounded-xl border border-slate-200 bg-brand-soft p-6 transition hover:-translate-y-0.5"
+            >
+              <h3 class="text-lg font-semibold text-brand-dark">Integrität</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                Vertrauliche, transparente Prozesse auf Basis nachhaltiger Partnerschaften.
+              </p>
+            </article>
+            <article
+              class="rounded-xl border border-slate-200 bg-brand-soft p-6 transition hover:-translate-y-0.5"
+            >
+              <h3 class="text-lg font-semibold text-brand-dark">Präzision</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                Strukturierte Bewertung und passgenaue Auswahl für konsistente Ergebnisse.
+              </p>
+            </article>
+            <article
+              class="rounded-xl border border-slate-200 bg-brand-soft p-6 transition hover:-translate-y-0.5"
+            >
+              <h3 class="text-lg font-semibold text-brand-dark">Netzwerk</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                Zugang zu exzellenten Talenten und Positionen in relevanten Branchen.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" class="bg-slate-50">
+        <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Leistungen</p>
+          <h2 class="mt-3 text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
+            Maßgeschneiderte Unterstützung für Unternehmen und Kandidatinnen und Kandidaten.
+          </h2>
+
+          <div class="mt-12 grid gap-8 md:grid-cols-2">
+            <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+              <h3 class="text-xl font-semibold text-brand-dark">Für Unternehmen</h3>
+              <ul class="mt-6 space-y-4 text-slate-600">
+                <li class="rounded-lg bg-slate-50 px-4 py-3">Executive Search</li>
+                <li class="rounded-lg bg-slate-50 px-4 py-3">Direktvermittlung</li>
+                <li class="rounded-lg bg-slate-50 px-4 py-3">Talentstrategie</li>
+              </ul>
+            </article>
+
+            <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+              <h3 class="text-xl font-semibold text-brand-dark">Für Kandidatinnen und Kandidaten</h3>
+              <ul class="mt-6 space-y-4 text-slate-600">
+                <li class="rounded-lg bg-slate-50 px-4 py-3">Karriereberatung</li>
+                <li class="rounded-lg bg-slate-50 px-4 py-3">Persönliche Vermittlung</li>
+                <li class="rounded-lg bg-slate-50 px-4 py-3">Bewerbungscoaching</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Success Metrics Section -->
+      <section id="metrics" class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Erfolgskennzahlen</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
+          Messbare Ergebnisse für Mandanten und Talente.
+        </h2>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="rounded-xl border border-slate-200 p-6">
+            <p class="text-4xl font-bold tracking-tight text-brand-dark">200+</p>
+            <p class="mt-2 text-sm text-slate-600">Erfolgreiche Besetzungen</p>
+          </article>
+          <article class="rounded-xl border border-slate-200 p-6">
+            <p class="text-4xl font-bold tracking-tight text-brand-dark">95%</p>
+            <p class="mt-2 text-sm text-slate-600">Bindungsquote nach 12 Monaten</p>
+          </article>
+          <article class="rounded-xl border border-slate-200 p-6">
+            <p class="text-4xl font-bold tracking-tight text-brand-dark">72h</p>
+            <p class="mt-2 text-sm text-slate-600">Erste Kandidaten-Shortlist</p>
+          </article>
+          <article class="rounded-xl border border-slate-200 p-6">
+            <p class="text-4xl font-bold tracking-tight text-brand-dark">18+</p>
+            <p class="mt-2 text-sm text-slate-600">Betreute Branchen</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section id="testimonials" class="bg-slate-50">
+        <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Referenzen</p>
+          <h2 class="mt-3 text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
+            Das sagen unsere Partner über die Zusammenarbeit.
+          </h2>
+
+          <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+              <p class="text-sm leading-relaxed text-slate-600">
+                "Der Suchprozess war strukturiert und schnell. Wir konnten eine Schlüsselposition in
+                kurzer Zeit mit hoher Sicherheit besetzen."
+              </p>
+              <p class="mt-5 text-sm font-semibold text-brand-dark">Managing Director, Tech-Unternehmen</p>
+            </article>
+            <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+              <p class="text-sm leading-relaxed text-slate-600">
+                "Diskret, professionell und strategisch. Unser kultureller Fit und die fachlichen
+                Anforderungen wurden exakt verstanden."
+              </p>
+              <p class="mt-5 text-sm font-semibold text-brand-dark">Leitung HR, Industriegruppe</p>
+            </article>
+            <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+              <p class="text-sm leading-relaxed text-slate-600">
+                "Als Kandidat wurde ich durch alle Phasen sehr präzise begleitet. Die Position passt
+                ideal zu meinem nächsten Karriereschritt."
+              </p>
+              <p class="mt-5 text-sm font-semibold text-brand-dark">Senior Finance Manager</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
+        <div class="grid gap-10 lg:grid-cols-[1.1fr_1fr]">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Kontakt</p>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
+              Sprechen wir über Ihre Besetzungsziele.
+            </h2>
+            <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-600">
+              Kontaktieren Sie uns für ein vertrauliches Erstgespräch. Wir reagieren schnell und
+              gestalten jedes Mandat individuell nach Ihren Anforderungen.
+            </p>
+
+            <div class="mt-8 space-y-2 text-sm text-slate-700">
+              <p><span class="font-semibold text-brand-dark">E-Mail:</span> kontakt@elevatesearch.de</p>
+              <p><span class="font-semibold text-brand-dark">Telefon:</span> +49 30 1234 5678</p>
+              <p><span class="font-semibold text-brand-dark">Standort:</span> Berlin, Deutschland</p>
+            </div>
+          </div>
+
+          <form
+            class="rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8"
+            action="#"
+            method="post"
+          >
+            <div class="space-y-5">
+              <div>
+                <label for="name" class="block text-sm font-medium text-brand-dark">Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  class="mt-2 w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-dark focus:ring-2 focus:ring-brand-dark/20"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-brand-dark">E-Mail</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  class="mt-2 w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-dark focus:ring-2 focus:ring-brand-dark/20"
+                />
+              </div>
+              <div>
+                <label for="message" class="block text-sm font-medium text-brand-dark">Nachricht</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  class="mt-2 w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-dark focus:ring-2 focus:ring-brand-dark/20"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="inline-flex w-full items-center justify-center rounded-md bg-brand-dark px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
+              >
+                Nachricht senden
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white">
+      <div
+        class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-600 md:flex-row md:items-center md:justify-between lg:px-8"
+      >
+        <p class="font-medium text-brand-dark">© 2026 Elevate Search. Alle Rechte vorbehalten.</p>
+        <div class="flex flex-wrap items-center gap-5">
+          <a href="#" class="transition hover:text-brand-dark">Impressum</a>
+          <a href="#" class="transition hover:text-brand-dark">Datenschutz</a>
+          <a href="#" class="transition hover:text-brand-dark">LinkedIn</a>
+          <a href="#" class="transition hover:text-brand-dark">Xing</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Leichtgewichtiger Mobile-Menu-Toggle
+      const menuButton = document.getElementById("menuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+
+      menuButton.addEventListener("click", () => {
+        const isOpen = !mobileMenu.classList.contains("hidden");
+        mobileMenu.classList.toggle("hidden");
+        menuButton.setAttribute("aria-expanded", String(!isOpen));
+      });
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          menuButton.setAttribute("aria-expanded", "false");
+        });
+      });
+    </script>
+  </body>
+</html>
