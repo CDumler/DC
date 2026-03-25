@@ -5,376 +5,1161 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Professionelle Personalberatung, die Unternehmen mit Top-Talenten verbindet."
+      content="Persönliche Boutique für die Besetzung von Führungsrollen. Selektiv, direkt und mit klarer Einschätzung."
     />
-    <title>CD Executive Search | Personalberatung</title>
+    <title>SDS. – Besetzungen mit Verantwortung</title>
 
-    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ["Inter", "system-ui", "sans-serif"],
-            },
-            colors: {
-              brand: {
-                dark: "#0f172a",
-                ink: "#1e293b",
-                soft: "#f1f5f9",
-              },
-            },
-            boxShadow: {
-              soft: "0 12px 30px -18px rgba(15, 23, 42, 0.35)",
-            },
-          },
-        },
-      };
-    </script>
-
     <style>
+      :root {
+        --hero-scroll-progress: 0;
+        --ink: #0f172a;
+        --ink-soft: #111827;
+        --bg: #fcf8f0;
+        --surface: #fffdf9;
+        --muted: #6b7280;
+        --muted-soft: #9ca3af;
+        --line: #e8dfd2;
+        --accent: #bfa37a;
+        --accent-deep: #a98b62;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       html {
         scroll-behavior: smooth;
       }
 
       body {
-        font-family: "Inter", system-ui, sans-serif;
+        margin: 0;
+        font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.65;
       }
 
-      /* Subtile Tiefenwirkung im Hero-Bereich */
-      .hero-bg {
-        background-image: radial-gradient(
-            circle at 15% 20%,
-            rgba(148, 163, 184, 0.18),
-            transparent 45%
-          ),
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        color: var(--ink-soft);
+        font-family: "Sora", "Plus Jakarta Sans", system-ui, sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        line-height: 1.2;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 3rem));
+        margin-inline: auto;
+      }
+
+      .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 40;
+        border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+        background: rgba(252, 248, 240, 0.94);
+        backdrop-filter: blur(8px);
+        opacity: 0;
+        transform: translateY(-105%);
+        pointer-events: none;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      .site-header.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 78px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.15rem;
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .brand .brand-d {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.8rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        color: var(--muted);
+        font-size: 0.93rem;
+        font-weight: 500;
+      }
+
+      .nav-links a {
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible {
+        color: var(--ink);
+      }
+
+      .menu-toggle {
+        display: none;
+        border: 1px solid rgba(17, 24, 39, 0.2);
+        border-radius: 0.55rem;
+        background: transparent;
+        color: var(--ink-soft);
+        padding: 0.55rem 0.8rem;
+        font: inherit;
+        font-size: 0.9rem;
+      }
+
+      .mobile-panel {
+        display: none;
+        border-top: 1px solid var(--line);
+        padding: 0.9rem 0 1.1rem;
+      }
+
+      .mobile-panel ul {
+        display: grid;
+        gap: 0.75rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        color: var(--muted);
+        font-weight: 500;
+      }
+
+      .mobile-panel a:hover,
+      .mobile-panel a:focus-visible {
+        color: var(--ink);
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        min-height: 100svh;
+        background:
           radial-gradient(
-            circle at 85% 15%,
-            rgba(99, 102, 241, 0.12),
-            transparent 40%
+            900px circle at 54% 36%,
+            rgba(191, 163, 122, calc(0.26 * (1 - var(--hero-scroll-progress)))),
+            rgba(191, 163, 122, calc(0.08 * (1 - var(--hero-scroll-progress)))) 36%,
+            transparent 62%
           ),
-          linear-gradient(145deg, #0f172a 0%, #111d37 45%, #1e293b 100%);
+          linear-gradient(
+            132deg,
+            rgb(
+                calc(15 + (252 - 15) * var(--hero-scroll-progress))
+                calc(23 + (248 - 23) * var(--hero-scroll-progress))
+                calc(42 + (240 - 42) * var(--hero-scroll-progress))
+              )
+              0%,
+            rgb(
+                calc(22 + (252 - 22) * var(--hero-scroll-progress))
+                calc(40 + (248 - 40) * var(--hero-scroll-progress))
+                calc(76 + (240 - 76) * var(--hero-scroll-progress))
+              )
+              45%,
+            rgb(
+                calc(35 + (252 - 35) * var(--hero-scroll-progress))
+                calc(63 + (248 - 63) * var(--hero-scroll-progress))
+                calc(112 + (240 - 112) * var(--hero-scroll-progress))
+              )
+              100%
+          );
+        transition: background 0.18s linear;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(15, 23, 42, calc(0.16 * (1 - var(--hero-scroll-progress)))),
+          rgba(15, 23, 42, calc(0.32 * (1 - var(--hero-scroll-progress))))
+        );
+        pointer-events: none;
+      }
+
+      .hero-shell {
+        position: relative;
+        z-index: 1;
+        min-height: 100svh;
+        padding: 2rem 0 1.4rem;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+
+      .hero-brand {
+        display: inline-flex;
+        align-items: flex-start;
+      }
+
+      .hero-wordmark-text {
+        display: inline-block;
+        margin: 0;
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+        font-weight: 600;
+        line-height: 0.92;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: rgb(
+          calc(246 + (20 - 246) * var(--hero-scroll-progress))
+          calc(248 + (31 - 248) * var(--hero-scroll-progress))
+          calc(252 + (50 - 252) * var(--hero-scroll-progress))
+        );
+        opacity: calc(1 - (0.75 * var(--hero-scroll-progress)));
+        transition:
+          opacity 0.18s linear,
+          color 0.18s linear;
+      }
+
+      .hero-wordmark-text .wordmark-d {
+        color: rgb(
+          calc(212 + (191 - 212) * var(--hero-scroll-progress))
+          calc(188 + (163 - 188) * var(--hero-scroll-progress))
+          calc(145 + (122 - 145) * var(--hero-scroll-progress))
+        );
+      }
+
+      .hero-main {
+        align-self: end;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: clamp(1rem, 2.2vw, 2.4rem);
+        align-items: start;
+        padding-bottom: clamp(2.2rem, 8vh, 5.6rem);
+      }
+
+      .hero-copy-left {
+        max-width: none;
+      }
+
+      .hero-copy-right {
+        max-width: 72ch;
+        margin-top: clamp(0.2rem, 1.4vw, 1rem);
+        margin-inline: auto;
+        text-align: center;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1.1rem;
+        color: rgb(
+          calc(226 + (71 - 226) * var(--hero-scroll-progress))
+          calc(232 + (85 - 232) * var(--hero-scroll-progress))
+          calc(240 + (105 - 240) * var(--hero-scroll-progress))
+        );
+        font-size: clamp(0.86rem, 1.25vw, 1.02rem);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 2rem;
+        height: 1px;
+        background: var(--accent);
+      }
+
+      .hero h1 {
+        color: rgb(
+          calc(248 + (15 - 248) * var(--hero-scroll-progress))
+          calc(250 + (23 - 250) * var(--hero-scroll-progress))
+          calc(252 + (42 - 252) * var(--hero-scroll-progress))
+        );
+        font-size: clamp(2.55rem, 8.3vw, 6.2rem);
+        line-height: 1.05;
+        margin-bottom: 0;
+      }
+
+      .hero h1 .hero-line {
+        display: block;
+        white-space: nowrap;
+      }
+
+      .hero .hero-subline {
+        font-size: clamp(1.03rem, 1.9vw, 1.24rem);
+        color: rgb(
+          calc(226 + (51 - 226) * var(--hero-scroll-progress))
+          calc(232 + (65 - 232) * var(--hero-scroll-progress))
+          calc(240 + (85 - 240) * var(--hero-scroll-progress))
+        );
+        max-width: 72ch;
+        margin-bottom: 1.75rem;
+        margin-inline: auto;
+        text-align: center;
+        line-height: 1.5;
+      }
+
+      .hero .hero-subline .subline-line {
+        display: block;
+        white-space: nowrap;
+      }
+
+      .hero-copy-right .cta-row {
+        margin-top: 0;
+        justify-content: center;
+      }
+
+      .hero .btn-primary {
+        background: rgb(
+          calc(248 + (15 - 248) * var(--hero-scroll-progress))
+          calc(250 + (23 - 250) * var(--hero-scroll-progress))
+          calc(252 + (42 - 252) * var(--hero-scroll-progress))
+        );
+        color: rgb(
+          calc(15 + (248 - 15) * var(--hero-scroll-progress))
+          calc(23 + (250 - 23) * var(--hero-scroll-progress))
+          calc(42 + (252 - 42) * var(--hero-scroll-progress))
+        );
+      }
+
+      .hero .btn-primary:hover,
+      .hero .btn-primary:focus-visible {
+        filter: brightness(1.02);
+      }
+
+      .hero .btn-outline {
+        border-color: rgba(
+          calc(248 + (15 - 248) * var(--hero-scroll-progress)),
+          calc(250 + (23 - 250) * var(--hero-scroll-progress)),
+          calc(252 + (42 - 252) * var(--hero-scroll-progress)),
+          calc(0.55 + (0.15 * var(--hero-scroll-progress)))
+        );
+        color: rgb(
+          calc(248 + (15 - 248) * var(--hero-scroll-progress))
+          calc(250 + (23 - 250) * var(--hero-scroll-progress))
+          calc(252 + (42 - 252) * var(--hero-scroll-progress))
+        );
+      }
+
+      .hero .btn-outline:hover,
+      .hero .btn-outline:focus-visible {
+        background: rgba(
+          calc(248 + (15 - 248) * var(--hero-scroll-progress)),
+          calc(250 + (23 - 250) * var(--hero-scroll-progress)),
+          calc(252 + (42 - 252) * var(--hero-scroll-progress)),
+          0.08
+        );
+      }
+
+      .hero-scroll-hint {
+        justify-self: center;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.74rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(
+          calc(226 + (71 - 226) * var(--hero-scroll-progress)),
+          calc(232 + (85 - 232) * var(--hero-scroll-progress)),
+          calc(240 + (105 - 240) * var(--hero-scroll-progress)),
+          0.72
+        );
+      }
+
+      .hero-scroll-hint .arrow {
+        font-size: 0.95rem;
+        animation: scrollNudge 1.7s ease-in-out infinite;
+      }
+
+      @keyframes scrollNudge {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(0.22rem);
+        }
+      }
+
+      .cta-row {
+        margin-top: 2.2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.62rem;
+        border: 1px solid transparent;
+        padding: 0.82rem 1.3rem;
+        font-size: 0.92rem;
+        font-weight: 600;
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease,
+          border-color 0.2s ease;
+      }
+
+      .btn-primary {
+        background: var(--ink-soft);
+        color: #f9fafb;
+      }
+
+      .btn-primary:hover,
+      .btn-primary:focus-visible {
+        background: #1e293b;
+      }
+
+      .btn-outline {
+        border-color: rgba(17, 24, 39, 0.25);
+        color: var(--ink-soft);
+      }
+
+      .btn-outline:hover,
+      .btn-outline:focus-visible {
+        border-color: rgba(17, 24, 39, 0.5);
+        background: rgba(15, 23, 42, 0.03);
+      }
+
+      .section {
+        padding: 5.6rem 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-title {
+        font-size: clamp(1.85rem, 3.8vw, 3rem);
+        margin-bottom: 0.95rem;
+      }
+
+      .section-lead {
+        color: var(--muted);
+        max-width: 72ch;
+      }
+
+      .about-layout {
+        display: grid;
+        gap: 2.2rem;
+      }
+
+      .about-copy {
+        display: grid;
+        gap: 1rem;
+        max-width: 76ch;
+        color: #334155;
+      }
+
+      .cards-grid {
+        margin-top: 2.2rem;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: var(--surface);
+        padding: 1.5rem;
+      }
+
+      .card h3 {
+        font-size: 1.35rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .card p {
+        color: #334155;
+      }
+
+      .values-grid {
+        margin-top: 2rem;
+        display: grid;
+        gap: 0.85rem;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .value-item {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 0.9rem;
+        padding: 1.2rem;
+      }
+
+      .value-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.45rem;
+      }
+
+      .value-item p {
+        color: #475569;
+        font-size: 0.95rem;
+      }
+
+      .metrics-grid {
+        margin-top: 2rem;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .metric {
+        border: 1px solid var(--line);
+        border-radius: 0.95rem;
+        background: var(--surface);
+        padding: 1.25rem;
+      }
+
+      .metric .value {
+        display: block;
+        font-size: clamp(1.6rem, 3.3vw, 2.35rem);
+        font-weight: 600;
+        color: var(--ink-soft);
+        font-family: "Sora", "Plus Jakarta Sans", system-ui, sans-serif;
+      }
+
+      .metric .label {
+        margin-top: 0.35rem;
+        color: #475569;
+        font-size: 0.95rem;
+      }
+
+      .quotes-grid {
+        margin-top: 2rem;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      blockquote {
+        margin: 0;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: var(--surface);
+        padding: 1.3rem;
+      }
+
+      blockquote p {
+        color: #334155;
+      }
+
+      .quote-author {
+        margin-top: 1rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .contact-layout {
+        display: grid;
+        gap: 2.1rem;
+        grid-template-columns: 1.05fr 1fr;
+      }
+
+      .contact-copy {
+        display: grid;
+        gap: 0.95rem;
+        color: #334155;
+        align-content: start;
+      }
+
+      .contact-points {
+        margin-top: 1rem;
+        display: grid;
+        gap: 0.4rem;
+        color: #475569;
+        font-size: 0.95rem;
+      }
+
+      .contact-points strong {
+        color: var(--ink-soft);
+      }
+
+      form {
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: var(--surface);
+        padding: 1.4rem;
+        display: grid;
+        gap: 1rem;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.42rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--ink-soft);
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border: 1px solid #d1d5db;
+        border-radius: 0.6rem;
+        background: #fff;
+        color: #111827;
+        font: inherit;
+        padding: 0.72rem 0.8rem;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: var(--accent-deep);
+        outline: 2px solid rgba(191, 163, 122, 0.25);
+        outline-offset: 0;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 8.5rem;
+      }
+
+      .site-footer {
+        padding: 2rem 0;
+        background: #f4eee3;
+      }
+
+      .footer-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        color: #4b5563;
+        font-size: 0.9rem;
+      }
+
+      .footer-claim {
+        color: var(--ink-soft);
+        font-weight: 600;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: #6b7280;
+      }
+
+      .footer-links a:hover,
+      .footer-links a:focus-visible {
+        color: var(--ink);
+      }
+
+      @media (max-width: 1080px) {
+        .hero-main {
+          gap: 1.25rem;
+          padding-bottom: 3rem;
+        }
+
+        .hero-copy-right {
+          max-width: 64ch;
+          margin-top: 0.2rem;
+          margin-inline: auto;
+        }
+
+        .values-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .metrics-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .quotes-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 860px) {
+        .nav-links {
+          display: none;
+        }
+
+        .menu-toggle {
+          display: inline-flex;
+        }
+
+        .mobile-panel.active {
+          display: block;
+        }
+
+        .hero-shell {
+          padding: 1.5rem 0 1rem;
+        }
+
+        .hero-main {
+          padding-bottom: 2.6rem;
+        }
+
+        .hero h1 {
+          font-size: clamp(2.3rem, 11vw, 4.6rem);
+        }
+
+        .hero h1 .hero-line {
+          white-space: normal;
+        }
+
+        .hero .hero-subline .subline-line {
+          white-space: normal;
+        }
+
+        .cards-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .values-grid,
+        .quotes-grid,
+        .metrics-grid,
+        .contact-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .container {
+          width: min(1120px, calc(100% - 2rem));
+        }
+
+        .section {
+          padding: 4.7rem 0;
+        }
+
+        .hero-shell {
+          padding-top: 1.2rem;
+        }
+
+        .hero-brand {
+          align-self: start;
+        }
+
+        .hero-wordmark-text {
+          font-size: clamp(1.9rem, 10vw, 2.7rem);
+        }
+
+        .eyebrow {
+          letter-spacing: 0.05em;
+          font-size: 0.8rem;
+        }
+
+        .hero-scroll-hint {
+          letter-spacing: 0.13em;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero {
+          transition: none;
+        }
+
+        .hero-scroll-hint .arrow {
+          animation: none;
+        }
       }
     </style>
   </head>
-  <body class="bg-white text-brand-ink antialiased">
-    <!-- Header / Navigation -->
-    <header class="sticky top-0 z-40 border-b border-slate-200/70 bg-white/95 backdrop-blur">
-      <nav
-        class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 lg:px-8"
-        aria-label="Hauptnavigation"
-      >
-        <a href="#hero" class="text-lg font-semibold tracking-tight text-brand-dark">CD Executive Search</a>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <nav class="nav-row" aria-label="Hauptnavigation">
+          <a href="#hero" class="brand" aria-label="SDS Startseite"
+            >S<span class="brand-d">D</span>S.</a
+          >
 
-        <button
-          id="menuButton"
-          type="button"
-          class="inline-flex items-center rounded-md border border-slate-300 px-3 py-2 text-sm font-medium text-brand-dark transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-brand-dark/30 lg:hidden"
-          aria-expanded="false"
-          aria-controls="mobileMenu"
-        >
-          Menü
-        </button>
+          <button
+            id="menuButton"
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+          >
+            Menü
+          </button>
 
-        <ul class="hidden items-center gap-8 text-sm font-medium text-slate-600 lg:flex">
-          <li><a class="transition hover:text-brand-dark" href="#about">Über uns</a></li>
-          <li><a class="transition hover:text-brand-dark" href="#services">Leistungen</a></li>
-          <li><a class="transition hover:text-brand-dark" href="#metrics">Ergebnisse</a></li>
-          <li><a class="transition hover:text-brand-dark" href="#testimonials">Referenzen</a></li>
-          <li><a class="transition hover:text-brand-dark" href="#contact">Kontakt</a></li>
-        </ul>
-      </nav>
+          <ul class="nav-links">
+            <li><a href="#haltung">Haltung</a></li>
+            <li><a href="#ansatz">Ansatz</a></li>
+            <li><a href="#werte">Werte</a></li>
+            <li><a href="#kennzahlen">Kennzahlen</a></li>
+            <li><a href="#referenzen">Referenzen</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
 
-      <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-6 py-4 lg:hidden">
-        <ul class="space-y-3 text-sm font-medium text-slate-700">
-          <li><a class="block transition hover:text-brand-dark" href="#about">Über uns</a></li>
-          <li><a class="block transition hover:text-brand-dark" href="#services">Leistungen</a></li>
-          <li><a class="block transition hover:text-brand-dark" href="#metrics">Ergebnisse</a></li>
-          <li><a class="block transition hover:text-brand-dark" href="#testimonials">Referenzen</a></li>
-          <li><a class="block transition hover:text-brand-dark" href="#contact">Kontakt</a></li>
-        </ul>
+        <div id="mobileMenu" class="mobile-panel">
+          <ul>
+            <li><a href="#haltung">Haltung</a></li>
+            <li><a href="#ansatz">Ansatz</a></li>
+            <li><a href="#werte">Werte</a></li>
+            <li><a href="#kennzahlen">Kennzahlen</a></li>
+            <li><a href="#referenzen">Referenzen</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </div>
       </div>
     </header>
 
     <main>
-      <!-- Hero Section -->
-      <section id="hero" class="hero-bg relative overflow-hidden">
-        <div class="mx-auto max-w-7xl px-6 py-24 lg:px-8 lg:py-32">
-          <div class="max-w-3xl">
-            <p
-              class="mb-6 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-slate-200"
+      <section id="hero" class="hero">
+        <div class="container hero-shell">
+          <a href="#hero" class="hero-brand" aria-label="SDS Startseite">
+            <span class="hero-wordmark-text"
+              >S<span class="wordmark-d">D</span>S.</span
             >
-              Personalberatung
-            </p>
-            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Wir verbinden Unternehmen mit Top-Talenten.
-            </h1>
-            <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
-              Wir begleiten wachstumsorientierte Unternehmen und leistungsstarke Fach- und
-              Führungskräfte bei strategischen Besetzungen mit nachhaltigem Erfolg.
-            </p>
+          </a>
 
-            <div class="mt-10 flex flex-wrap gap-4">
-              <a
-                href="#contact"
-                class="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-brand-dark shadow-soft transition hover:-translate-y-0.5 hover:bg-slate-100"
-                >Beratungsgespräch vereinbaren</a
-              >
-              <a
-                href="#services"
-                class="inline-flex items-center justify-center rounded-md border border-slate-300/40 bg-transparent px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
-                >Möglichkeiten ansehen</a
-              >
+          <div class="hero-main">
+            <div class="hero-copy-left">
+              <p class="eyebrow">Boutique der Führungsbesetzung</p>
+              <h1>
+                <span class="hero-line">Weniger Besetzungen.</span>
+                <span class="hero-line">Bessere Entscheidungen.</span>
+              </h1>
+            </div>
+
+            <div class="hero-copy-right">
+              <p class="hero-subline">
+                <span class="subline-line"
+                  >Wir begleiten die Besetzung von Führungsrollen persönlich und selektiv mit
+                  klarer Einschätzung,</span
+                >
+                <span class="subline-line"
+                  >direkter Ansprache und dem Anspruch, dass es wirklich passt.</span
+                >
+              </p>
+
+              <div class="cta-row">
+                <a class="btn btn-primary" href="#kontakt">Mandat besprechen</a>
+                <a class="btn btn-outline" href="#ansatz">Ansatz ansehen</a>
+              </div>
             </div>
           </div>
+
+          <a class="hero-scroll-hint" href="#haltung" aria-label="Zum nächsten Abschnitt scrollen">
+            <span class="arrow" aria-hidden="true">↓</span>
+            <span>Scroll</span>
+          </a>
         </div>
       </section>
 
-      <!-- About Section -->
-      <section id="about" class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-        <div class="grid gap-12 lg:grid-cols-[1.35fr_1fr] lg:items-start">
+      <section id="haltung" class="section">
+        <div class="container about-layout">
           <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Über uns</p>
-            <h2 class="mt-3 text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
-              Verlässliche Partner für Executive- und Spezialisten-Rekrutierung.
-            </h2>
-            <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-600">
-              CD Executive Search unterstützt Unternehmen, die Qualität, Diskretion und Tempo schätzen.
-              Wir verbinden Marktkenntnis mit einem kuratierten Netzwerk und liefern präzise
-              Besetzungen, die Teams und Karrieren langfristig stärken.
+            <h2 class="section-title">Besetzungen mit Verantwortung.</h2>
+          </div>
+
+          <div class="about-copy">
+            <p>
+              Wir verstehen die Besetzung von Führungsrollen nicht als Prozess, sondern als
+              Entscheidung mit Wirkung.
             </p>
-          </div>
-
-          <div class="grid gap-4">
-            <article
-              class="rounded-xl border border-slate-200 bg-brand-soft p-6 transition hover:-translate-y-0.5"
-            >
-              <h3 class="text-lg font-semibold text-brand-dark">Integrität</h3>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                Vertrauliche, transparente Prozesse auf Basis nachhaltiger Partnerschaften.
-              </p>
-            </article>
-            <article
-              class="rounded-xl border border-slate-200 bg-brand-soft p-6 transition hover:-translate-y-0.5"
-            >
-              <h3 class="text-lg font-semibold text-brand-dark">Präzision</h3>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                Strukturierte Bewertung und passgenaue Auswahl für konsistente Ergebnisse.
-              </p>
-            </article>
-            <article
-              class="rounded-xl border border-slate-200 bg-brand-soft p-6 transition hover:-translate-y-0.5"
-            >
-              <h3 class="text-lg font-semibold text-brand-dark">Netzwerk</h3>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600">
-                Zugang zu exzellenten Talenten und Positionen in relevanten Branchen.
-              </p>
-            </article>
+            <p>
+              Deshalb arbeiten wir bewusst selektiv. Wenige Mandate, klare Fokussierung und
+              persönliche Begleitung statt paralleler Besetzungen.
+            </p>
+            <p>
+              Die Ansprache erfolgt direkt und respektvoll. Ohne Umwege, ohne standardisierte
+              Vorgehensweisen.
+            </p>
+            <p>
+              Unternehmen sowie Kandidatinnen und Kandidaten begleiten wir eng vom ersten Austausch
+              bis zur finalen Entscheidung.
+            </p>
+            <p>Nicht jede Besetzung ist dringend. Aber jede verdient Sorgfalt.</p>
           </div>
         </div>
       </section>
 
-      <!-- Services Section -->
-      <section id="services" class="bg-slate-50">
-        <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Leistungen</p>
-          <h2 class="mt-3 text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
-            Maßgeschneiderte Unterstützung für Unternehmen und Kandidatinnen und Kandidaten.
-          </h2>
+      <section id="ansatz" class="section">
+        <div class="container">
+          <h2 class="section-title">Fokus auf das, was entscheidend ist.</h2>
+          <p class="section-lead">
+            Für jede Besetzung schaffen wir einen klaren Rahmen aus Verständnis, Auswahl und
+            verbindlicher Begleitung.
+          </p>
 
-          <div class="mt-12 grid gap-8 md:grid-cols-2">
-            <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-              <h3 class="text-xl font-semibold text-brand-dark">Für Unternehmen</h3>
-              <ul class="mt-6 space-y-4 text-slate-600">
-                <li class="rounded-lg bg-slate-50 px-4 py-3">Executive Search</li>
-                <li class="rounded-lg bg-slate-50 px-4 py-3">Direktvermittlung</li>
-                <li class="rounded-lg bg-slate-50 px-4 py-3">Talentstrategie</li>
-              </ul>
-            </article>
-
-            <article class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-              <h3 class="text-xl font-semibold text-brand-dark">Für Kandidatinnen und Kandidaten</h3>
-              <ul class="mt-6 space-y-4 text-slate-600">
-                <li class="rounded-lg bg-slate-50 px-4 py-3">Karriereberatung</li>
-                <li class="rounded-lg bg-slate-50 px-4 py-3">Persönliche Vermittlung</li>
-                <li class="rounded-lg bg-slate-50 px-4 py-3">Bewerbungscoaching</li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Success Metrics Section -->
-      <section id="metrics" class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Erfolgskennzahlen</p>
-        <h2 class="mt-3 text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
-          Messbare Ergebnisse für Mandanten und Talente.
-        </h2>
-
-        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <article class="rounded-xl border border-slate-200 p-6">
-            <p class="text-4xl font-bold tracking-tight text-brand-dark">200+</p>
-            <p class="mt-2 text-sm text-slate-600">Erfolgreiche Besetzungen</p>
-          </article>
-          <article class="rounded-xl border border-slate-200 p-6">
-            <p class="text-4xl font-bold tracking-tight text-brand-dark">95%</p>
-            <p class="mt-2 text-sm text-slate-600">Bindungsquote nach 12 Monaten</p>
-          </article>
-          <article class="rounded-xl border border-slate-200 p-6">
-            <p class="text-4xl font-bold tracking-tight text-brand-dark">72h</p>
-            <p class="mt-2 text-sm text-slate-600">Erste Kandidaten-Shortlist</p>
-          </article>
-          <article class="rounded-xl border border-slate-200 p-6">
-            <p class="text-4xl font-bold tracking-tight text-brand-dark">18+</p>
-            <p class="mt-2 text-sm text-slate-600">Betreute Branchen</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- Testimonials Section -->
-      <section id="testimonials" class="bg-slate-50">
-        <div class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Referenzen</p>
-          <h2 class="mt-3 text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
-            Das sagen unsere Partner über die Zusammenarbeit.
-          </h2>
-
-          <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p class="text-sm leading-relaxed text-slate-600">
-                "Der Suchprozess war strukturiert und schnell. Wir konnten eine Schlüsselposition in
-                kurzer Zeit mit hoher Sicherheit besetzen."
+          <div class="cards-grid">
+            <article class="card">
+              <h3>Führungsbesetzung</h3>
+              <p>
+                Besetzung von Führungsrollen ab der ersten Verantwortungsebene. Im Mittelpunkt
+                stehen Passung, Entwicklungspotenzial und langfristige Wirkung.
               </p>
-              <p class="mt-5 text-sm font-semibold text-brand-dark">Managing Director, Tech-Unternehmen</p>
             </article>
-            <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p class="text-sm leading-relaxed text-slate-600">
-                "Diskret, professionell und strategisch. Unser kultureller Fit und die fachlichen
-                Anforderungen wurden exakt verstanden."
+
+            <article class="card">
+              <h3>Direkte Ansprache</h3>
+              <p>
+                Persönliche und sorgfältig vorbereitete Ansprache ausgewählter Persönlichkeiten.
+                Klar, transparent und auf Augenhöhe.
               </p>
-              <p class="mt-5 text-sm font-semibold text-brand-dark">Leitung HR, Industriegruppe</p>
             </article>
-            <article class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-              <p class="text-sm leading-relaxed text-slate-600">
-                "Als Kandidat wurde ich durch alle Phasen sehr präzise begleitet. Die Position passt
-                ideal zu meinem nächsten Karriereschritt."
+
+            <article class="card">
+              <h3>Einschätzung &amp; Auswahl</h3>
+              <p>
+                Bewertung von Profilen im Kontext der konkreten Rolle, mit Blick auf
+                Verantwortung, Umfeld und Entwicklung.
               </p>
-              <p class="mt-5 text-sm font-semibold text-brand-dark">Senior Finance Manager</p>
+            </article>
+
+            <article class="card">
+              <h3>Persönliche Begleitung</h3>
+              <p>
+                Enge Abstimmung während des gesamten Prozesses. Verbindlich, strukturiert und mit
+                klarer Kommunikation auf beiden Seiten.
+              </p>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- Contact Section -->
-      <section id="contact" class="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
-        <div class="grid gap-10 lg:grid-cols-[1.1fr_1fr]">
-          <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">Kontakt</p>
-            <h2 class="mt-3 text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">
-              Sprechen wir über Ihre Besetzungsziele.
-            </h2>
-            <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-600">
-              Kontaktieren Sie uns für ein vertrauliches Erstgespräch. Wir reagieren schnell und
-              gestalten jedes Mandat individuell nach Ihren Anforderungen.
+      <section id="werte" class="section">
+        <div class="container">
+          <h2 class="section-title">Grundsätze der Zusammenarbeit.</h2>
+
+          <div class="values-grid">
+            <article class="value-item">
+              <h3>Selektivität</h3>
+              <p>Mandate werden bewusst gewählt. Qualität entsteht durch Fokus.</p>
+            </article>
+            <article class="value-item">
+              <h3>Ehrlichkeit</h3>
+              <p>Kommunikation erfolgt direkt und nachvollziehbar, ohne Überzeichnung.</p>
+            </article>
+            <article class="value-item">
+              <h3>Nähe</h3>
+              <p>Zusammenarbeit bedeutet persönliche Begleitung statt Distanz.</p>
+            </article>
+            <article class="value-item">
+              <h3>Urteilskraft</h3>
+              <p>Entscheidungen basieren auf Verständnis, nicht nur auf Profilen.</p>
+            </article>
+            <article class="value-item">
+              <h3>Verbindlichkeit</h3>
+              <p>Zusagen werden eingehalten, Abläufe bleiben klar und nachvollziehbar.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="kennzahlen" class="section">
+        <div class="container">
+          <h2 class="section-title">Erfahrung, die sich messen lässt.</h2>
+          <p class="section-lead">
+            Ergebnisse entstehen nicht durch Volumen, sondern durch Fokus und klare
+            Entscheidungen.
+          </p>
+
+          <div class="metrics-grid">
+            <article class="metric">
+              <span class="value">200+</span>
+              <p class="label">erfolgreich begleitete Besetzungen</p>
+            </article>
+            <article class="metric">
+              <span class="value">95 %</span>
+              <p class="label">nachhaltige Besetzungen</p>
+            </article>
+            <article class="metric">
+              <span class="value">72h</span>
+              <p class="label">bis zur ersten qualifizierten Auswahl</p>
+            </article>
+            <article class="metric">
+              <span class="value">18+</span>
+              <p class="label">Jahre Erfahrung in der Besetzung von Schlüsselrollen</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="referenzen" class="section">
+        <div class="container">
+          <h2 class="section-title">Zusammenarbeit auf Augenhöhe.</h2>
+          <p class="section-lead">
+            Vertrauen entsteht dort, wo Entscheidungen gemeinsam getragen werden.
+          </p>
+
+          <div class="quotes-grid">
+            <blockquote>
+              <p>
+                "Die Begleitung war klar und persönlich. Für unsere Teamleitung haben wir nicht nur
+                fachlich, sondern auch menschlich die richtige Entscheidung getroffen."
+              </p>
+              <p class="quote-author">Geschäftsführung, Technologieunternehmen</p>
+            </blockquote>
+
+            <blockquote>
+              <p>
+                "Im gesamten Mandat gab es eine direkte Einschätzung ohne Umwege. Das hat intern für
+                Klarheit und Verbindlichkeit gesorgt."
+              </p>
+              <p class="quote-author">Leitung Personal, Mittelstand</p>
+            </blockquote>
+
+            <blockquote>
+              <p>
+                "Als Kandidatin wurde ich respektvoll angesprochen und ehrlich begleitet. Die Rolle
+                passt zu meiner Verantwortung und zu meinem nächsten Schritt."
+              </p>
+              <p class="quote-author">Projektleitung, Finance</p>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section id="kontakt" class="section">
+        <div class="container contact-layout">
+          <div class="contact-copy">
+            <h2 class="section-title">Vertraulich austauschen.</h2>
+            <p>
+              Ob konkrete Besetzung oder erste Einschätzung: Ein Gespräch schafft Klarheit.
             </p>
 
-            <div class="mt-8 space-y-2 text-sm text-slate-700">
-              <p><span class="font-semibold text-brand-dark">E-Mail:</span> kontakt@cdexecutivesearch.de</p>
-              <p><span class="font-semibold text-brand-dark">Telefon:</span> +49 30 1234 5678</p>
-              <p><span class="font-semibold text-brand-dark">Standort:</span> Berlin, Deutschland</p>
+            <div class="contact-points">
+              <p><strong>E-Mail:</strong> kontakt@sds.de</p>
+              <p><strong>Telefon:</strong> +49 30 1234 5678</p>
+              <p><strong>Standort:</strong> Berlin</p>
+            </div>
+
+            <div class="cta-row">
+              <a href="#" class="btn btn-outline">Mandat besprechen</a>
             </div>
           </div>
 
-          <form
-            class="rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8"
-            action="#"
-            method="post"
-          >
-            <div class="space-y-5">
-              <div>
-                <label for="name" class="block text-sm font-medium text-brand-dark">Name</label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  class="mt-2 w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-dark focus:ring-2 focus:ring-brand-dark/20"
-                />
-              </div>
-              <div>
-                <label for="email" class="block text-sm font-medium text-brand-dark">E-Mail</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  class="mt-2 w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-dark focus:ring-2 focus:ring-brand-dark/20"
-                />
-              </div>
-              <div>
-                <label for="message" class="block text-sm font-medium text-brand-dark">Nachricht</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                  class="mt-2 w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-brand-dark focus:ring-2 focus:ring-brand-dark/20"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                class="inline-flex w-full items-center justify-center rounded-md bg-brand-dark px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800"
-              >
-                Nachricht senden
-              </button>
+          <form action="#" method="post">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required />
             </div>
+            <div>
+              <label for="email">E-Mail</label>
+              <input id="email" name="email" type="email" required />
+            </div>
+            <div>
+              <label for="message">Nachricht</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Mandat besprechen</button>
           </form>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-200 bg-white">
-      <div
-        class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-600 md:flex-row md:items-center md:justify-between lg:px-8"
-      >
-        <p class="font-medium text-brand-dark">© 2026 CD Executive Search. Alle Rechte vorbehalten.</p>
-        <div class="flex flex-wrap items-center gap-5">
-          <a href="#" class="transition hover:text-brand-dark">Impressum</a>
-          <a href="#" class="transition hover:text-brand-dark">Datenschutz</a>
-          <a href="#" class="transition hover:text-brand-dark">LinkedIn</a>
-          <a href="#" class="transition hover:text-brand-dark">Xing</a>
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <p class="footer-claim">Besetzungen mit Verantwortung.</p>
+        <div class="footer-links">
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+          <a href="#">LinkedIn</a>
         </div>
       </div>
     </footer>
 
     <script>
-      // Leichtgewichtiger Mobile-Menu-Toggle
+      const root = document.documentElement;
+      const siteHeader = document.querySelector(".site-header");
       const menuButton = document.getElementById("menuButton");
       const mobileMenu = document.getElementById("mobileMenu");
       const mobileLinks = mobileMenu.querySelectorAll("a");
+      const hero = document.getElementById("hero");
 
       menuButton.addEventListener("click", () => {
-        const isOpen = !mobileMenu.classList.contains("hidden");
-        mobileMenu.classList.toggle("hidden");
-        menuButton.setAttribute("aria-expanded", String(!isOpen));
+        const expanded = menuButton.getAttribute("aria-expanded") === "true";
+        menuButton.setAttribute("aria-expanded", String(!expanded));
+        mobileMenu.classList.toggle("active");
       });
 
       mobileLinks.forEach((link) => {
         link.addEventListener("click", () => {
-          mobileMenu.classList.add("hidden");
+          mobileMenu.classList.remove("active");
           menuButton.setAttribute("aria-expanded", "false");
         });
       });
+
+      const updateHeaderVisibility = () => {
+        if (!siteHeader) return;
+
+        const threshold = hero ? Math.max(hero.offsetHeight * 0.08, 28) : 28;
+        const shouldShowHeader = window.scrollY > threshold;
+        siteHeader.classList.toggle("is-visible", shouldShowHeader);
+
+        if (!shouldShowHeader) {
+          mobileMenu.classList.remove("active");
+          menuButton.setAttribute("aria-expanded", "false");
+        }
+      };
+
+      if (hero) {
+        let ticking = false;
+        const updateOnScroll = () => {
+          const heroRange = Math.max(hero.offsetHeight * 0.9, 1);
+          const progress = Math.min(1, Math.max(0, window.scrollY / heroRange));
+          root.style.setProperty("--hero-scroll-progress", progress.toFixed(3));
+          updateHeaderVisibility();
+          ticking = false;
+        };
+
+        const requestUpdate = () => {
+          if (ticking) return;
+          ticking = true;
+          window.requestAnimationFrame(updateOnScroll);
+        };
+
+        window.addEventListener("scroll", requestUpdate, { passive: true });
+        window.addEventListener("resize", requestUpdate);
+
+        updateOnScroll();
+      } else {
+        root.style.setProperty("--hero-scroll-progress", "0");
+        updateHeaderVisibility();
+        window.addEventListener("scroll", updateHeaderVisibility, { passive: true });
+      }
     </script>
   </body>
 </html>
