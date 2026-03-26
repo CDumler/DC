@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Impressum von SDS. mit den Pflichtangaben nach § 5 TMG."
+    />
+    <title>Impressum | SDS.</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --ink: #0f172a;
+        --ink-soft: #111827;
+        --muted: #6b7280;
+        --line: #e8dfd2;
+        --surface: #fffdf9;
+        --accent: #bfa37a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        color: var(--ink);
+        background: #fcf8f0;
+        line-height: 1.65;
+      }
+
+      .container {
+        width: min(960px, calc(100% - 2rem));
+        margin-inline: auto;
+      }
+
+      .topbar {
+        border-bottom: 1px solid var(--line);
+        background: rgba(252, 248, 240, 0.92);
+        backdrop-filter: blur(6px);
+      }
+
+      .topbar-row {
+        min-height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.14rem;
+        color: var(--ink-soft);
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+
+      .brand .d {
+        color: var(--accent);
+      }
+
+      .back {
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .back:hover,
+      .back:focus-visible {
+        color: var(--ink-soft);
+      }
+
+      main {
+        padding: 3.4rem 0 4rem;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: "Sora", "Plus Jakarta Sans", system-ui, sans-serif;
+        font-size: clamp(2rem, 4vw, 2.9rem);
+        line-height: 1.14;
+        color: var(--ink-soft);
+      }
+
+      .lead {
+        margin: 0.7rem 0 0;
+        color: var(--muted);
+      }
+
+      .sheet {
+        margin-top: 1.5rem;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: var(--surface);
+        padding: clamp(1.1rem, 2.5vw, 1.8rem);
+      }
+
+      h2 {
+        margin: 1.35rem 0 0.5rem;
+        font-family: "Sora", "Plus Jakarta Sans", system-ui, sans-serif;
+        font-size: 1.08rem;
+        color: var(--ink-soft);
+      }
+
+      h2:first-of-type {
+        margin-top: 0;
+      }
+
+      p {
+        margin: 0.35rem 0 0;
+        color: #334155;
+      }
+
+      .block {
+        border-top: 1px solid rgba(191, 163, 122, 0.28);
+        padding-top: 0.9rem;
+      }
+
+      a.inline {
+        color: #334155;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-row">
+        <a class="brand" href="./index.html">S<span class="d">D</span>S.</a>
+        <a class="back" href="./index.html">Zurück zur Startseite</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <h1>Impressum</h1>
+        <p class="lead">Angaben gemäß § 5 TMG</p>
+
+        <section class="sheet" aria-label="Impressumsdaten">
+          <h2>Anbieter</h2>
+          <p>
+            SDS. Dumler Solutions<br />
+            Inhaber: Christian Dumler<br />
+            [Deine Straße Hausnummer]<br />
+            [PLZ Ort]<br />
+            Deutschland
+          </p>
+
+          <div class="block">
+            <h2>Kontakt</h2>
+            <p>
+              Telefon: [Telefonnummer]<br />
+              E-Mail: [E-Mail-Adresse]<br />
+              Website: https://[deine-domain].de
+            </p>
+          </div>
+
+          <div class="block">
+            <h2>Umsatzsteuer</h2>
+            <p>
+              Umsatzsteuer-ID gemäß § 27a Umsatzsteuergesetz:<br />
+              [falls vorhanden eintragen, sonst löschen oder:]<br />
+              Keine Umsatzsteuer-ID vorhanden.
+            </p>
+          </div>
+
+          <div class="block">
+            <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+            <p>
+              Christian Dumler<br />
+              [Deine Straße Hausnummer]<br />
+              [PLZ Ort]
+            </p>
+          </div>
+
+          <div class="block">
+            <h2>Hinweis zur Tätigkeit</h2>
+            <p>
+              Personalberatung mit Fokus auf die Besetzung von Führungsrollen.
+              Für die angebotenen Leistungen besteht keine behördliche Zulassungspflicht.
+            </p>
+          </div>
+
+          <div class="block">
+            <h2>EU-Streitschlichtung</h2>
+            <p>
+              Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS)
+              bereit:
+              <a class="inline" href="https://ec.europa.eu/consumers/odr/"
+                >https://ec.europa.eu/consumers/odr/</a
+              ><br />
+              Unsere E-Mail-Adresse finden Sie oben im Impressum.
+            </p>
+          </div>
+
+          <div class="block">
+            <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+            <p>
+              Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+              Verbraucherschlichtungsstelle teilzunehmen.
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
