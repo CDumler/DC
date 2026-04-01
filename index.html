@@ -1083,7 +1083,7 @@
         color: var(--ink-soft);
       }
 
-      form {
+      .contact-form {
         border: 1px solid var(--line);
         border-radius: 1rem;
         background: var(--surface);
@@ -1092,7 +1092,88 @@
         gap: 1rem;
       }
 
-      label {
+      .contact-form-stack {
+        display: grid;
+        gap: 0.95rem;
+        align-content: start;
+      }
+
+      .contact-switch-wrap {
+        justify-self: center;
+        width: min(100%, 470px);
+        display: grid;
+        gap: 0.38rem;
+      }
+
+      .switch-kicker {
+        margin: 0;
+        text-align: center;
+        color: #475569;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .contact-switch {
+        border: 1px solid rgba(191, 163, 122, 0.38);
+        border-radius: 999px;
+        padding: 0.35rem;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(246, 238, 223, 0.88));
+        box-shadow:
+          0 10px 22px -20px rgba(15, 23, 42, 0.45),
+          inset 0 1px 0 rgba(255, 255, 255, 0.75);
+      }
+
+      .intent-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.36rem;
+      }
+
+      .intent-tab {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.4);
+        color: #334155;
+        font: inherit;
+        font-size: 0.88rem;
+        font-weight: 600;
+        padding: 0.52rem 0.9rem;
+        cursor: pointer;
+        transition:
+          border-color 0.18s ease,
+          background-color 0.18s ease,
+          color 0.18s ease,
+          box-shadow 0.18s ease;
+      }
+
+      .intent-tab.is-active {
+        border-color: rgba(191, 163, 122, 0.56);
+        background: #ffffff;
+        color: #1f2937;
+        box-shadow: 0 6px 12px -10px rgba(15, 23, 42, 0.45);
+      }
+
+      .intent-tab:focus-visible {
+        outline: 2px solid rgba(191, 163, 122, 0.32);
+        outline-offset: 1px;
+      }
+
+      .form-panel {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .form-panel[hidden] {
+        display: none !important;
+      }
+
+      .contact-form label {
         display: block;
         margin-bottom: 0.42rem;
         font-size: 0.9rem;
@@ -1100,8 +1181,8 @@
         color: var(--ink-soft);
       }
 
-      input,
-      textarea {
+      .contact-form input,
+      .contact-form textarea {
         width: 100%;
         border: 1px solid #d1d5db;
         border-radius: 0.6rem;
@@ -1111,16 +1192,215 @@
         padding: 0.72rem 0.8rem;
       }
 
-      input:focus,
-      textarea:focus {
+      .contact-form input:focus,
+      .contact-form textarea:focus {
         border-color: var(--accent-deep);
         outline: 2px solid rgba(191, 163, 122, 0.25);
         outline-offset: 0;
       }
 
-      textarea {
+      .contact-form textarea {
         resize: vertical;
         min-height: 8.5rem;
+      }
+
+      .upload-field {
+        display: grid;
+        gap: 0.5rem;
+      }
+
+      .upload-field > label {
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: #64748b;
+      }
+
+      .upload-dropzone {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        align-items: center;
+        min-height: 9.4rem;
+        border: 1px dashed rgba(122, 95, 58, 0.42);
+        border-radius: 1rem;
+        padding: 1.15rem 1.1rem 1.2rem;
+        background:
+          radial-gradient(420px circle at 12% 10%, rgba(191, 163, 122, 0.2), transparent 62%),
+          linear-gradient(162deg, #ffffff 0%, #faf2e5 100%);
+        transition:
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .upload-dropzone:focus-within {
+        border-color: rgba(169, 139, 98, 0.72);
+        box-shadow:
+          0 0 0 3px rgba(191, 163, 122, 0.2),
+          0 14px 24px -20px rgba(15, 23, 42, 0.48);
+      }
+
+      .upload-dropzone.is-dragover {
+        border-color: rgba(169, 139, 98, 0.76);
+        box-shadow:
+          0 0 0 3px rgba(191, 163, 122, 0.22),
+          0 16px 28px -20px rgba(15, 23, 42, 0.52);
+        transform: translateY(-1px);
+      }
+
+      .upload-dropzone.has-error {
+        border-color: rgba(185, 28, 28, 0.55);
+        background:
+          radial-gradient(420px circle at 12% 10%, rgba(239, 68, 68, 0.16), transparent 62%),
+          linear-gradient(162deg, #ffffff 0%, #fff5f5 100%);
+      }
+
+      .upload-dropzone.has-selection {
+        border-color: rgba(122, 95, 58, 0.42);
+        min-height: 7rem;
+        background:
+          radial-gradient(420px circle at 12% 10%, rgba(191, 163, 122, 0.14), transparent 62%),
+          linear-gradient(162deg, #ffffff 0%, #faf2e5 100%);
+      }
+
+      .upload-input {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .upload-content {
+        position: relative;
+        pointer-events: none;
+        display: grid;
+        gap: 0.74rem;
+      }
+
+      .upload-head {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: 0.82rem;
+        align-items: center;
+      }
+
+      .upload-copy {
+        display: grid;
+        gap: 0.22rem;
+        min-width: 0;
+      }
+
+      .upload-visual {
+        width: 3rem;
+        height: 3rem;
+        display: inline-grid;
+        place-items: center;
+        border-radius: 0.9rem;
+        border: 1px solid rgba(122, 95, 58, 0.34);
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: 0 8px 18px -14px rgba(15, 23, 42, 0.5);
+      }
+
+      .upload-icon {
+        width: 1.45rem;
+        height: 1.45rem;
+        color: #7f6343;
+      }
+
+      .upload-dropzone.has-error .upload-visual {
+        border-color: rgba(185, 28, 28, 0.38);
+        background: rgba(254, 242, 242, 0.94);
+      }
+
+      .upload-dropzone.has-error .upload-icon {
+        color: #b91c1c;
+      }
+
+      .upload-kicker {
+        margin: 0;
+        color: #8a6f4b;
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .upload-title {
+        margin: 0;
+        color: #0f172a;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.35;
+      }
+
+      .upload-subtitle {
+        margin: 0;
+        color: #64748b;
+        font-size: 0.84rem;
+        line-height: 1.42;
+      }
+
+      .upload-foot {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.44rem;
+      }
+
+      .upload-selected {
+        margin: 0;
+        position: relative;
+        width: min(100%, 44ch);
+        text-align: center;
+        color: #1f2937;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.5;
+        white-space: pre-line;
+        overflow-wrap: anywhere;
+      }
+
+      .upload-dropzone.has-selection .upload-content {
+        display: none;
+      }
+
+      .upload-dropzone.has-selection .upload-selected {
+        display: block;
+      }
+
+      .upload-chip {
+        width: fit-content;
+        padding: 0.24rem 0.5rem;
+        border: 1px solid rgba(17, 24, 39, 0.16);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.82);
+        color: #475569;
+        font-size: 0.76rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+
+      .upload-chip-soft {
+        border-color: rgba(122, 95, 58, 0.28);
+        background: rgba(250, 242, 229, 0.78);
+        color: #8a6f4b;
+      }
+
+      .form-hint {
+        margin-top: 0.05rem;
+        color: #64748b;
+        font-size: 0.82rem;
+      }
+
+      .form-error {
+        margin-top: 0.4rem;
+        color: #b91c1c;
+        font-size: 0.84rem;
+        font-weight: 600;
       }
 
       .site-footer {
@@ -1437,6 +1717,26 @@
 
         .founder-photo-stage {
           width: min(100%, 245px);
+        }
+
+        .upload-head {
+          grid-template-columns: 1fr;
+          gap: 0.64rem;
+          align-items: start;
+        }
+
+        .upload-visual {
+          width: 2.72rem;
+          height: 2.72rem;
+        }
+
+        .upload-dropzone {
+          min-height: 8.4rem;
+          padding: 1rem 0.95rem 1.05rem;
+        }
+
+        .upload-dropzone.has-selection {
+          min-height: 6.2rem;
         }
       }
 
@@ -1887,26 +2187,146 @@
               <p><strong>Standort:</strong> Frankfurt am Main</p>
             </div>
 
-            <div class="cta-row">
-              <a href="#" class="btn btn-outline">Mandat besprechen</a>
-            </div>
           </div>
 
-          <form action="#" method="post">
-            <div>
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" required />
+          <div class="contact-form-stack">
+            <div class="contact-switch-wrap">
+              <p class="switch-kicker">Anfrageart wählen</p>
+              <div class="contact-switch">
+                <div class="intent-tabs" role="tablist" aria-label="Anfrageart">
+                  <button
+                    type="button"
+                    id="companyTab"
+                    class="intent-tab is-active"
+                    data-form-type="company"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="companyFields"
+                  >
+                    Unternehmen
+                  </button>
+                  <button
+                    type="button"
+                    id="candidateTab"
+                    class="intent-tab"
+                    data-form-type="candidate"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="candidateFields"
+                  >
+                    Kandidat:in
+                  </button>
+                </div>
+              </div>
             </div>
-            <div>
-              <label for="email">E-Mail</label>
-              <input id="email" name="email" type="email" required />
-            </div>
-            <div>
-              <label for="message">Nachricht</label>
-              <textarea id="message" name="message" required></textarea>
-            </div>
-            <button class="btn btn-primary" type="submit">Mandat besprechen</button>
-          </form>
+
+            <form
+              id="contactForm"
+              class="contact-form"
+              action="https://formsubmit.co/christian-dumler@web.de"
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <input type="hidden" name="_subject" value="Homepage-Anfrage" />
+              <input type="hidden" id="inquiryTypeInput" name="anfrage_typ" value="Unternehmen" />
+
+              <div
+                id="companyFields"
+                class="form-panel"
+                data-form-group="company"
+                role="tabpanel"
+                aria-labelledby="companyTab"
+              >
+                <div>
+                  <label for="companyName">Firmenname</label>
+                  <input id="companyName" name="firmenname" type="text" required />
+                </div>
+                <div>
+                  <label for="contactPerson">Kontaktperson</label>
+                  <input id="contactPerson" name="kontaktperson" type="text" required />
+                </div>
+                <div>
+                  <label for="companyEmail">E-Mail-Adresse</label>
+                  <input id="companyEmail" name="emailadresse" type="email" required />
+                </div>
+                <div>
+                  <label for="companyMessage">Nachricht</label>
+                  <textarea id="companyMessage" name="nachricht" required></textarea>
+                </div>
+              </div>
+
+              <div
+                id="candidateFields"
+                class="form-panel"
+                data-form-group="candidate"
+                role="tabpanel"
+                aria-labelledby="candidateTab"
+                hidden
+              >
+                <div>
+                  <label for="candidateName">Name</label>
+                  <input id="candidateName" name="name" type="text" required disabled />
+                </div>
+                <div>
+                  <label for="candidateEmail">E-Mail-Adresse</label>
+                  <input id="candidateEmail" name="emailadresse" type="email" required disabled />
+                </div>
+                <div>
+                  <label for="candidateNote">Nachricht</label>
+                  <textarea id="candidateNote" name="nachricht" required disabled></textarea>
+                </div>
+              </div>
+
+              <div class="upload-field">
+                <label for="attachment">Datei</label>
+                <div id="uploadDropzone" class="upload-dropzone">
+                  <input
+                    id="attachment"
+                    class="upload-input"
+                    name="attachment"
+                    type="file"
+                    accept=".pdf,.doc,.docx,.txt,.rtf"
+                  />
+                  <div class="upload-content" aria-hidden="true">
+                    <div class="upload-head">
+                      <div class="upload-visual">
+                        <svg
+                          class="upload-icon"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.8"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M12 16V6" />
+                          <path d="m8.5 9.5 3.5-3.5 3.5 3.5" />
+                          <path d="M20 15.5v2a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-2" />
+                        </svg>
+                      </div>
+                      <div class="upload-copy">
+                        <p class="upload-kicker">Dokument anhängen</p>
+                        <p class="upload-title">Datei hier ablegen oder per Klick auswählen</p>
+                        <p class="upload-subtitle">Ideal für Stellenprofil oder Lebenslauf</p>
+                      </div>
+                    </div>
+                    <div class="upload-foot">
+                      <span class="upload-chip">PDF, DOC, DOCX</span>
+                      <span class="upload-chip upload-chip-soft">max. 2 MB</span>
+                    </div>
+                  </div>
+                  <p id="attachmentSelected" class="upload-selected" hidden></p>
+                </div>
+                <p id="attachmentError" class="form-error" role="alert" hidden>
+                  Datei ist zu groß. Bitte maximal 2 MB hochladen.
+                </p>
+              </div>
+
+              <button id="submitCta" class="btn btn-primary" type="submit">
+                Mandat besprechen
+              </button>
+            </form>
+          </div>
         </div>
       </section>
     </main>
@@ -1932,6 +2352,16 @@
       const mobileMenu = document.getElementById("mobileMenu");
       const mobileLinks = mobileMenu.querySelectorAll("a");
       const hero = document.getElementById("hero");
+      const contactForm = document.getElementById("contactForm");
+      const inquiryTypeInput = document.getElementById("inquiryTypeInput");
+      const inquiryTabs = document.querySelectorAll("[data-form-type]");
+      const formGroups = document.querySelectorAll("[data-form-group]");
+      const submitCta = document.getElementById("submitCta");
+      const attachmentInput = document.getElementById("attachment");
+      const attachmentError = document.getElementById("attachmentError");
+      const attachmentSelected = document.getElementById("attachmentSelected");
+      const uploadDropzone = document.getElementById("uploadDropzone");
+      const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024;
 
       menuButton.addEventListener("click", () => {
         const expanded = menuButton.getAttribute("aria-expanded") === "true";
@@ -1945,6 +2375,131 @@
           menuButton.setAttribute("aria-expanded", "false");
         });
       });
+
+      const setInquiryType = (type) => {
+        const activeType = type === "candidate" ? "candidate" : "company";
+
+        if (inquiryTypeInput) {
+          inquiryTypeInput.value = activeType === "company" ? "Unternehmen" : "Kandidat:in";
+        }
+
+        if (submitCta) {
+          submitCta.textContent =
+            activeType === "company" ? "Mandat besprechen" : "Nachricht senden";
+        }
+
+        inquiryTabs.forEach((tab) => {
+          const isActive = tab.dataset.formType === activeType;
+          tab.classList.toggle("is-active", isActive);
+          tab.setAttribute("aria-selected", String(isActive));
+          tab.tabIndex = isActive ? 0 : -1;
+        });
+
+        formGroups.forEach((group) => {
+          const isActive = group.dataset.formGroup === activeType;
+          group.hidden = !isActive;
+          group.querySelectorAll("input, textarea, select").forEach((field) => {
+            field.disabled = !isActive;
+          });
+        });
+      };
+
+      const validateAttachmentSize = () => {
+        if (!attachmentInput || !attachmentError) return true;
+
+        const file = attachmentInput.files && attachmentInput.files[0];
+        if (!file) {
+          attachmentError.hidden = true;
+          if (attachmentSelected) {
+            attachmentSelected.hidden = true;
+            attachmentSelected.textContent = "";
+          }
+          if (uploadDropzone) {
+            uploadDropzone.classList.remove("has-selection", "has-error");
+          }
+          return true;
+        }
+
+        if (attachmentSelected) {
+          const fileSize =
+            file.size >= 1024 * 1024
+              ? `${(file.size / (1024 * 1024)).toFixed(2)} MB`
+              : `${Math.max(1, Math.round(file.size / 1024))} KB`;
+          attachmentSelected.textContent = `${file.name}\n(${fileSize})`;
+          attachmentSelected.hidden = false;
+        }
+
+        const isValid = file.size <= MAX_ATTACHMENT_BYTES;
+        attachmentError.hidden = isValid;
+        if (uploadDropzone) {
+          uploadDropzone.classList.add("has-selection");
+          uploadDropzone.classList.toggle("has-error", !isValid);
+        }
+        return isValid;
+      };
+
+      const assignDroppedFile = (file) => {
+        if (!attachmentInput || !file || typeof DataTransfer === "undefined") return false;
+        try {
+          const transfer = new DataTransfer();
+          transfer.items.add(file);
+          attachmentInput.files = transfer.files;
+          return true;
+        } catch (_) {
+          return false;
+        }
+      };
+
+      inquiryTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          setInquiryType(tab.dataset.formType);
+        });
+      });
+
+      if (attachmentInput) {
+        attachmentInput.addEventListener("change", () => {
+          if (uploadDropzone) {
+            uploadDropzone.classList.remove("is-dragover");
+          }
+          validateAttachmentSize();
+        });
+      }
+
+      if (uploadDropzone) {
+        ["dragenter", "dragover"].forEach((eventName) => {
+          uploadDropzone.addEventListener(eventName, (event) => {
+            event.preventDefault();
+            uploadDropzone.classList.add("is-dragover");
+          });
+        });
+
+        ["dragleave", "dragend", "drop"].forEach((eventName) => {
+          uploadDropzone.addEventListener(eventName, () => {
+            uploadDropzone.classList.remove("is-dragover");
+          });
+        });
+
+        uploadDropzone.addEventListener("drop", (event) => {
+          event.preventDefault();
+          const droppedFiles = event.dataTransfer && event.dataTransfer.files;
+          if (!droppedFiles || droppedFiles.length === 0) return;
+
+          if (assignDroppedFile(droppedFiles[0])) {
+            validateAttachmentSize();
+          }
+        });
+      }
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", (event) => {
+          if (!validateAttachmentSize()) {
+            event.preventDefault();
+          }
+        });
+      }
+
+      setInquiryType("company");
+      validateAttachmentSize();
 
       const updateHeaderVisibility = () => {
         if (!siteHeader) return;
