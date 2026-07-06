@@ -7,12 +7,12 @@
       name="description"
       content="Persönliche Boutique für die Besetzung von Führungsrollen. Selektiv, direkt und mit klarer Einschätzung."
     />
-    <title>SDS. – Besetzungen mit Verantwortung</title>
+    <title>D.ONE Besetzungen mit Verantwortung</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -117,16 +117,55 @@
 
       .brand {
         display: inline-flex;
-        align-items: baseline;
-        gap: 0.15rem;
-        font-size: 1.15rem;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
+        align-items: center;
+        color: var(--ink-soft);
+        line-height: 1;
       }
 
-      .brand .brand-d {
-        color: var(--accent);
+      .logo {
+        font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        font-size: clamp(0.92rem, 1.15vw, 1.04rem);
+        letter-spacing: 0;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+        white-space: nowrap;
+      }
+
+      .logo-d,
+      .logo-one {
+        font-weight: 500;
+        letter-spacing: 0.09em;
+        line-height: 1;
+      }
+
+      .logo-one {
+        margin-left: 1px;
+      }
+
+      .logo-dot {
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        margin-left: 8px;
+        margin-right: 11px;
+        border-radius: 50%;
+        background-color: var(--accent);
+        position: relative;
+        top: 0;
+        flex-shrink: 0;
+        transform-origin: center;
+        transition:
+          transform 0.2s ease,
+          background-color 0.2s ease;
+      }
+
+      .brand:hover .logo-dot,
+      .brand:focus-visible .logo-dot {
+        transform: scale(1.15);
+        background-color: var(--accent-deep);
       }
 
       .nav-links {
@@ -242,16 +281,18 @@
       .hero-brand {
         display: inline-flex;
         align-items: flex-start;
+        margin-top: clamp(1rem, 3.2vh, 2.2rem);
       }
 
       .hero-wordmark-text {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
         margin: 0;
-        font-family: "Cormorant Garamond", Georgia, serif;
-        font-size: clamp(2.25rem, 4.5vw, 3.75rem);
-        font-weight: 600;
-        line-height: 0.92;
-        letter-spacing: 0.03em;
+        font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        font-size: clamp(1.45rem, 2.35vw, 1.85rem);
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: 0;
         text-transform: uppercase;
         color: rgb(
           calc(246 + (20 - 246) * var(--hero-scroll-progress))
@@ -264,12 +305,38 @@
           color 0.18s linear;
       }
 
-      .hero-wordmark-text .wordmark-d {
-        color: rgb(
-          calc(212 + (191 - 212) * var(--hero-scroll-progress))
-          calc(188 + (163 - 188) * var(--hero-scroll-progress))
-          calc(145 + (122 - 145) * var(--hero-scroll-progress))
-        );
+      .hero-logo-d,
+      .hero-logo-one {
+        font-weight: 500;
+        letter-spacing: 0.09em;
+        line-height: 1;
+      }
+
+      .hero-logo-one {
+        margin-left: 1px;
+      }
+
+      .hero-logo-dot {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        margin-left: 11px;
+        margin-right: 14px;
+        border-radius: 50%;
+        background-color: var(--accent);
+        position: relative;
+        top: 0;
+        flex-shrink: 0;
+        transform-origin: center;
+        transition:
+          transform 0.2s ease,
+          background-color 0.2s ease;
+      }
+
+      .hero-brand:hover .hero-logo-dot,
+      .hero-brand:focus-visible .hero-logo-dot {
+        transform: scale(1.15);
+        background-color: var(--accent-deep);
       }
 
       .hero-main {
@@ -278,11 +345,16 @@
         grid-template-columns: minmax(0, 1fr);
         gap: clamp(1rem, 2.2vw, 2.4rem);
         align-items: start;
+        justify-items: center;
+        text-align: center;
         padding-bottom: clamp(2.2rem, 8vh, 5.6rem);
       }
 
       .hero-copy-left {
-        max-width: none;
+        width: fit-content;
+        max-width: min(100%, 92rem);
+        margin-inline: auto;
+        text-align: left;
       }
 
       .hero-copy-right {
@@ -295,6 +367,7 @@
       .eyebrow {
         display: inline-flex;
         align-items: center;
+        justify-content: flex-start;
         gap: 0.5rem;
         margin-bottom: 1.1rem;
         color: rgb(
@@ -322,14 +395,17 @@
           calc(250 + (23 - 250) * var(--hero-scroll-progress))
           calc(252 + (42 - 252) * var(--hero-scroll-progress))
         );
-        font-size: clamp(2.55rem, 8.3vw, 6.2rem);
+        font-size: clamp(2.45rem, 7.1vw, 5.25rem);
         line-height: 1.05;
+        margin-inline: 0;
         margin-bottom: 0;
+        text-wrap: balance;
+        text-align: left;
       }
 
       .hero h1 .hero-line {
         display: block;
-        white-space: nowrap;
+        white-space: normal;
       }
 
       .hero .hero-subline {
@@ -638,6 +714,7 @@
         position: relative;
         display: grid;
         gap: 1.1rem;
+        --approach-progress: 0;
       }
 
       .approach-flow::before {
@@ -658,6 +735,22 @@
         z-index: 0;
       }
 
+      .approach-flow.is-scroll-sequenced::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0.3rem;
+        bottom: 0.3rem;
+        width: 2px;
+        background: linear-gradient(180deg, rgba(191, 163, 122, 0.96), rgba(191, 163, 122, 0.62));
+        transform: translateX(-50%) scaleY(var(--approach-progress));
+        transform-origin: top;
+        opacity: 0.95;
+        pointer-events: none;
+        z-index: 0;
+        transition: transform 0.22s ease-out;
+      }
+
       .approach-flow > * {
         position: relative;
         z-index: 1;
@@ -667,6 +760,22 @@
         position: relative;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .approach-flow.is-scroll-sequenced .approach-item {
+        opacity: 0.08;
+        transform: translateY(2.2rem) scale(0.985);
+        filter: blur(4px);
+        transition:
+          opacity 0.45s ease,
+          transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
+          filter 0.45s ease;
+      }
+
+      .approach-flow.is-scroll-sequenced .approach-item.is-revealed {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
       }
 
       .approach-dot {
@@ -682,11 +791,49 @@
         transform: translateX(-50%);
       }
 
+      .approach-flow.is-scroll-sequenced .approach-dot {
+        background: #d9c7ab;
+        box-shadow: 0 0 0 2px rgba(191, 163, 122, 0.2);
+        transition:
+          background-color 0.35s ease,
+          box-shadow 0.35s ease,
+          transform 0.35s ease;
+      }
+
+      .approach-flow.is-scroll-sequenced .approach-item.is-revealed .approach-dot {
+        background: var(--accent);
+        box-shadow: 0 0 0 3px rgba(191, 163, 122, 0.3);
+      }
+
+      .approach-flow.is-scroll-sequenced .approach-item.is-current .approach-dot {
+        transform: translateX(-50%) scale(1.18);
+        box-shadow:
+          0 0 0 4px rgba(191, 163, 122, 0.25),
+          0 0 0 10px rgba(191, 163, 122, 0.09);
+      }
+
       .approach-card {
         border: 1px solid #e6dac9;
         border-radius: 1rem;
         background: linear-gradient(170deg, #ffffff 0%, #fffcf7 100%);
         padding: 1.35rem 1.35rem 1.45rem;
+      }
+
+      .approach-flow.is-scroll-sequenced .approach-card {
+        transition:
+          border-color 0.35s ease,
+          box-shadow 0.45s ease,
+          background 0.45s ease;
+      }
+
+      .approach-flow.is-scroll-sequenced .approach-item.is-revealed .approach-card {
+        box-shadow: 0 20px 34px -28px rgba(15, 23, 42, 0.34);
+      }
+
+      .approach-flow.is-scroll-sequenced .approach-item.is-current .approach-card {
+        border-color: #dcc8aa;
+        background: linear-gradient(168deg, #ffffff 0%, #fff9ef 100%);
+        box-shadow: 0 26px 44px -30px rgba(15, 23, 42, 0.4);
       }
 
       .approach-item:nth-child(odd) .approach-card {
@@ -807,6 +954,41 @@
         z-index: 2;
         display: grid;
         gap: clamp(1.35rem, 2.1vw, 1.85rem);
+        --manifesto-progress: 0;
+      }
+
+      .manifesto-list.is-scroll-sequenced::before {
+        content: "";
+        position: absolute;
+        left: -0.55rem;
+        top: 0.6rem;
+        bottom: 0.6rem;
+        width: 1.5px;
+        background: linear-gradient(
+          180deg,
+          rgba(191, 163, 122, 0.14),
+          rgba(191, 163, 122, 0.78) 24%,
+          rgba(191, 163, 122, 0.78) 76%,
+          rgba(191, 163, 122, 0.14)
+        );
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .manifesto-list.is-scroll-sequenced::after {
+        content: "";
+        position: absolute;
+        left: -0.55rem;
+        top: 0.6rem;
+        bottom: 0.6rem;
+        width: 2px;
+        background: linear-gradient(180deg, rgba(191, 163, 122, 0.96), rgba(191, 163, 122, 0.62));
+        transform: scaleY(var(--manifesto-progress));
+        transform-origin: top;
+        opacity: 0.96;
+        z-index: 0;
+        pointer-events: none;
+        transition: transform 0.22s ease-out;
       }
 
       .manifesto-item {
@@ -829,6 +1011,64 @@
           transform 0.22s ease,
           border-color 0.22s ease,
           box-shadow 0.22s ease;
+      }
+
+      .manifesto-list.is-scroll-sequenced .manifesto-item {
+        opacity: 0.08;
+        transform: translateY(2rem) scale(0.986);
+        filter: blur(4px);
+        transition:
+          opacity 0.45s ease,
+          transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1),
+          filter 0.45s ease,
+          border-color 0.35s ease,
+          box-shadow 0.45s ease,
+          background 0.45s ease;
+      }
+
+      .manifesto-list.is-scroll-sequenced .manifesto-item.is-revealed {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+
+      .manifesto-list.is-scroll-sequenced .manifesto-item.is-revealed {
+        box-shadow: 0 18px 34px -26px rgba(15, 23, 42, 0.32);
+      }
+
+      .manifesto-list.is-scroll-sequenced .manifesto-item.is-current {
+        border-color: #e0d1bb;
+        border-left-color: rgba(191, 163, 122, 0.78);
+        background: linear-gradient(164deg, rgba(255, 255, 255, 0.98), rgba(255, 248, 236, 0.92));
+        box-shadow: 0 24px 42px -29px rgba(15, 23, 42, 0.38);
+      }
+
+      .manifesto-list.is-scroll-sequenced .manifesto-item::before {
+        content: "";
+        position: absolute;
+        left: -0.89rem;
+        top: 1.42rem;
+        width: 0.58rem;
+        height: 0.58rem;
+        border-radius: 50%;
+        background: #d8c5a7;
+        box-shadow: 0 0 0 3px rgba(191, 163, 122, 0.14);
+        transition:
+          background-color 0.35s ease,
+          box-shadow 0.35s ease,
+          transform 0.35s ease;
+      }
+
+      .manifesto-list.is-scroll-sequenced .manifesto-item.is-revealed::before {
+        background: var(--accent);
+        box-shadow: 0 0 0 3px rgba(191, 163, 122, 0.24);
+      }
+
+      .manifesto-list.is-scroll-sequenced .manifesto-item.is-current::before {
+        transform: scale(1.16);
+        box-shadow:
+          0 0 0 4px rgba(191, 163, 122, 0.24),
+          0 0 0 10px rgba(191, 163, 122, 0.09);
       }
 
       .manifesto-item:hover,
@@ -1576,8 +1816,17 @@
           transform: none;
         }
 
+        .approach-flow.is-scroll-sequenced::after {
+          left: 0.95rem;
+          transform: scaleY(var(--approach-progress));
+        }
+
         .approach-item {
           grid-template-columns: 1fr;
+        }
+
+        .approach-flow.is-scroll-sequenced .approach-item {
+          transform: translateY(1.6rem) scale(0.99);
         }
 
         .approach-item:nth-child(odd) .approach-card,
@@ -1590,6 +1839,10 @@
           left: 0.95rem;
           top: 1.3rem;
           transform: none;
+        }
+
+        .approach-flow.is-scroll-sequenced .approach-item.is-current .approach-dot {
+          transform: scale(1.18);
         }
 
         .approach-closing {
@@ -1606,6 +1859,20 @@
           grid-template-columns: 1fr;
           row-gap: 0.65rem;
           padding: 1.02rem 1rem 1.08rem 1.08rem;
+        }
+
+        .manifesto-list.is-scroll-sequenced::before,
+        .manifesto-list.is-scroll-sequenced::after {
+          left: -0.45rem;
+        }
+
+        .manifesto-list.is-scroll-sequenced .manifesto-item {
+          transform: translateY(1.45rem) scale(0.99);
+        }
+
+        .manifesto-list.is-scroll-sequenced .manifesto-item::before {
+          left: -0.8rem;
+          top: 1.28rem;
         }
 
         .manifesto-item h3,
@@ -1648,10 +1915,11 @@
 
         .hero-brand {
           align-self: start;
+          margin-top: 0.7rem;
         }
 
         .hero-wordmark-text {
-          font-size: clamp(1.9rem, 10vw, 2.7rem);
+          font-size: clamp(1.18rem, 5.2vw, 1.38rem);
         }
 
         .eyebrow {
@@ -1745,6 +2013,24 @@
           transition: none;
         }
 
+        .logo-dot {
+          transition: none;
+        }
+
+        .brand:hover .logo-dot,
+        .brand:focus-visible .logo-dot {
+          transform: none;
+        }
+
+        .hero-logo-dot {
+          transition: none;
+        }
+
+        .hero-brand:hover .hero-logo-dot,
+        .hero-brand:focus-visible .hero-logo-dot {
+          transform: none;
+        }
+
         .hero-scroll-hint .arrow {
           animation: none;
         }
@@ -1757,6 +2043,32 @@
         .manifesto-item:focus-within {
           transform: none;
         }
+
+        .approach-flow.is-scroll-sequenced::after,
+        .approach-flow.is-scroll-sequenced .approach-item,
+        .approach-flow.is-scroll-sequenced .approach-card,
+        .approach-flow.is-scroll-sequenced .approach-dot {
+          transition: none;
+        }
+
+        .approach-flow.is-scroll-sequenced .approach-item {
+          opacity: 1;
+          transform: none;
+          filter: none;
+        }
+
+        .manifesto-list.is-scroll-sequenced::before,
+        .manifesto-list.is-scroll-sequenced::after,
+        .manifesto-list.is-scroll-sequenced .manifesto-item,
+        .manifesto-list.is-scroll-sequenced .manifesto-item::before {
+          transition: none;
+        }
+
+        .manifesto-list.is-scroll-sequenced .manifesto-item {
+          opacity: 1;
+          transform: none;
+          filter: none;
+        }
       }
     </style>
   </head>
@@ -1764,9 +2076,13 @@
     <header class="site-header">
       <div class="container">
         <nav class="nav-row" aria-label="Hauptnavigation">
-          <a href="#hero" class="brand" aria-label="SDS Startseite"
-            >S<span class="brand-d">D</span>S.</a
-          >
+          <a href="#hero" class="brand" aria-label="D.ONE Startseite">
+            <span class="logo">
+              <span class="logo-d">D</span>
+              <span class="logo-dot" aria-hidden="true"></span>
+              <span class="logo-one">ONE</span>
+            </span>
+          </a>
 
           <button
             id="menuButton"
@@ -1806,10 +2122,12 @@
     <main>
       <section id="hero" class="hero">
         <div class="container hero-shell">
-          <a href="#hero" class="hero-brand" aria-label="SDS Startseite">
-            <span class="hero-wordmark-text"
-              >S<span class="wordmark-d">D</span>S.</span
-            >
+          <a href="#hero" class="hero-brand" aria-label="D.ONE Startseite">
+            <span class="hero-wordmark-text">
+              <span class="hero-logo-d">D</span>
+              <span class="hero-logo-dot" aria-hidden="true"></span>
+              <span class="hero-logo-one">ONE</span>
+            </span>
           </a>
 
           <div class="hero-main">
@@ -2067,7 +2385,7 @@
               <div class="founder-facts">
                 <div class="fact-card">
                   <p class="fact-label">Rolle</p>
-                  <p class="fact-value">Inhaber & persönlicher Ansprechpartner bei SDS.</p>
+                  <p class="fact-value">Inhaber & persönlicher Ansprechpartner bei D.ONE.</p>
                 </div>
                 <div class="fact-card">
                   <p class="fact-label">Schwerpunkt</p>
@@ -2087,7 +2405,7 @@
                 <div class="founder-story-item">
                   <h4>Grund der Gründung</h4>
                   <p>
-                    SDS ist aus dem Wunsch entstanden, Besetzungen ruhiger und persönlicher zu
+                    D.ONE ist aus dem Wunsch entstanden, Besetzungen ruhiger und persönlicher zu
                     gestalten: ohne Massenprozess, mit mehr Verantwortung für die Entscheidung.
                   </p>
                   <p>
@@ -2108,51 +2426,6 @@
           </div>
         </div>
 
-        <div class="mt-16 rounded-2xl border border-slate-200 bg-white p-8 shadow-soft lg:p-10">
-          <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-            <figure class="mx-auto w-full max-w-sm">
-              <img
-                src='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 800"><rect width="100%25" height="100%25" fill="%23e2e8f0"/><circle cx="320" cy="280" r="120" fill="%2394a3b8"/><rect x="160" y="450" width="320" height="180" rx="90" fill="%2394a3b8"/><text x="320" y="730" text-anchor="middle" font-family="Arial, sans-serif" font-size="36" fill="%23334155">Foto folgt</text></svg>'
-                alt="Platzhalter für persönliches Profilbild"
-                class="aspect-[4/5] w-full rounded-xl border border-slate-200 object-cover"
-              />
-              <figcaption class="mt-3 text-center text-sm text-slate-500">
-                Hier kann später dein persönliches Foto eingefügt werden.
-              </figcaption>
-            </figure>
-
-            <div>
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-                Persönliche Vorstellung
-              </p>
-              <h3 class="mt-3 text-2xl font-bold tracking-tight text-brand-dark sm:text-3xl">
-                Dein Kurzprofil
-              </h3>
-              <p class="mt-4 text-base leading-relaxed text-slate-600">
-                Dieser Bereich stellt dich persönlich vor. Die folgenden Punkte sind als Vorlage
-                angelegt und können später mit deinen konkreten Inhalten ergänzt werden.
-              </p>
-
-              <ul class="mt-6 space-y-3 text-sm text-slate-700">
-                <li class="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
-                  Name & Position: [wird ergänzt]
-                </li>
-                <li class="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
-                  Berufserfahrung: [wird ergänzt]
-                </li>
-                <li class="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
-                  Schwerpunkte / Branchen: [wird ergänzt]
-                </li>
-                <li class="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
-                  Ausbildung & Qualifikationen: [wird ergänzt]
-                </li>
-                <li class="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
-                  Persönliche Motivation: [wird ergänzt]
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </section>
 
       <section id="kennzahlen" class="section is-hidden-feature">
@@ -2228,7 +2501,7 @@
             </p>
 
             <div class="contact-points">
-              <p><strong>E-Mail:</strong> kontakt@sds.de</p>
+              <p><strong>E-Mail:</strong> kontakt@d.one</p>
               <p><strong>Telefon:</strong> +49 176 3457 6090</p>
               <p><strong>Standort:</strong> Frankfurt am Main</p>
             </div>
@@ -2381,7 +2654,7 @@
       <div class="container footer-row">
         <div class="footer-meta">
           <p class="footer-claim">Besetzungen mit Verantwortung.</p>
-          <p class="footer-copy">© 2026 SDS. Alle Rechte vorbehalten.</p>
+          <p class="footer-copy">© 2026 D.ONE Alle Rechte vorbehalten.</p>
         </div>
         <div class="footer-links">
           <a href="./impressum.html">Impressum</a>
@@ -2407,7 +2680,21 @@
       const attachmentError = document.getElementById("attachmentError");
       const attachmentSelected = document.getElementById("attachmentSelected");
       const uploadDropzone = document.getElementById("uploadDropzone");
+      const approachSection = document.getElementById("ansatz");
+      const approachFlow = approachSection ? approachSection.querySelector(".approach-flow") : null;
+      const approachItems = approachFlow
+        ? Array.from(approachFlow.querySelectorAll(".approach-item"))
+        : [];
+      const valuesSection = document.getElementById("werte");
+      const valuesList = valuesSection ? valuesSection.querySelector(".manifesto-list") : null;
+      const valuesItems = valuesList ? Array.from(valuesList.querySelectorAll(".manifesto-item")) : [];
+      const prefersReducedMotionQuery =
+        typeof window.matchMedia === "function"
+          ? window.matchMedia("(prefers-reduced-motion: reduce)")
+          : null;
       const MAX_ATTACHMENT_BYTES = 2 * 1024 * 1024;
+      let approachSequenceEnabled = false;
+      let valuesSequenceEnabled = false;
 
       menuButton.addEventListener("click", () => {
         const expanded = menuButton.getAttribute("aria-expanded") === "true";
@@ -2496,6 +2783,150 @@
         }
       };
 
+      const clearApproachItemState = () => {
+        approachItems.forEach((item) => {
+          item.classList.remove("is-revealed", "is-current");
+        });
+      };
+
+      const setApproachVisibleSteps = (visibleCount) => {
+        if (!approachSequenceEnabled || !approachItems.length) return;
+
+        const clampedVisibleCount = Math.max(1, Math.min(approachItems.length, visibleCount));
+        approachItems.forEach((item, index) => {
+          const isRevealed = index < clampedVisibleCount;
+          const isCurrent = index === clampedVisibleCount - 1;
+          item.classList.toggle("is-revealed", isRevealed);
+          item.classList.toggle("is-current", isCurrent);
+        });
+      };
+
+      const getApproachScrollProgress = () => {
+        if (!approachSection) return 0;
+
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+        const scrollTop = window.scrollY || window.pageYOffset || 0;
+        const sectionTop = approachSection.offsetTop;
+        const sectionHeight = approachSection.offsetHeight;
+
+        const start = sectionTop - viewportHeight * 0.72;
+        const end = sectionTop + sectionHeight - viewportHeight * 0.32;
+        const range = Math.max(end - start, 1);
+        return Math.min(1, Math.max(0, (scrollTop - start) / range));
+      };
+
+      const updateApproachSequence = () => {
+        if (!approachFlow || !approachItems.length || !approachSequenceEnabled) return;
+
+        const progress = getApproachScrollProgress();
+        const stepIndex = Math.min(
+          approachItems.length - 1,
+          Math.max(0, Math.floor(progress * approachItems.length))
+        );
+
+        setApproachVisibleSteps(stepIndex + 1);
+        approachFlow.style.setProperty("--approach-progress", progress.toFixed(3));
+      };
+
+      const disableApproachSequence = () => {
+        if (!approachFlow || !approachItems.length) return;
+
+        approachSequenceEnabled = false;
+        approachFlow.classList.remove("is-scroll-sequenced");
+        clearApproachItemState();
+      };
+
+      const enableApproachSequence = () => {
+        if (!approachFlow || approachItems.length < 2) return;
+
+        approachSequenceEnabled = true;
+        approachFlow.classList.add("is-scroll-sequenced");
+        updateApproachSequence();
+      };
+
+      const syncApproachSequenceMode = () => {
+        if (!approachFlow || approachItems.length < 2) return;
+
+        if (prefersReducedMotionQuery && prefersReducedMotionQuery.matches) {
+          disableApproachSequence();
+          return;
+        }
+
+        enableApproachSequence();
+      };
+
+      const clearValuesItemState = () => {
+        valuesItems.forEach((item) => {
+          item.classList.remove("is-revealed", "is-current");
+        });
+      };
+
+      const setVisibleValues = (visibleCount) => {
+        if (!valuesSequenceEnabled || !valuesItems.length) return;
+
+        const clampedVisibleCount = Math.max(1, Math.min(valuesItems.length, visibleCount));
+        valuesItems.forEach((item, index) => {
+          const isRevealed = index < clampedVisibleCount;
+          const isCurrent = index === clampedVisibleCount - 1;
+          item.classList.toggle("is-revealed", isRevealed);
+          item.classList.toggle("is-current", isCurrent);
+        });
+      };
+
+      const getValuesScrollProgress = () => {
+        if (!valuesSection) return 0;
+
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+        const scrollTop = window.scrollY || window.pageYOffset || 0;
+        const sectionTop = valuesSection.offsetTop;
+        const sectionHeight = valuesSection.offsetHeight;
+
+        const start = sectionTop - viewportHeight * 0.72;
+        const end = sectionTop + sectionHeight - viewportHeight * 0.3;
+        const range = Math.max(end - start, 1);
+        return Math.min(1, Math.max(0, (scrollTop - start) / range));
+      };
+
+      const updateValuesSequence = () => {
+        if (!valuesList || !valuesItems.length || !valuesSequenceEnabled) return;
+
+        const progress = getValuesScrollProgress();
+        const itemIndex = Math.min(
+          valuesItems.length - 1,
+          Math.max(0, Math.floor(progress * valuesItems.length))
+        );
+
+        setVisibleValues(itemIndex + 1);
+        valuesList.style.setProperty("--manifesto-progress", progress.toFixed(3));
+      };
+
+      const disableValuesSequence = () => {
+        if (!valuesList || !valuesItems.length) return;
+
+        valuesSequenceEnabled = false;
+        valuesList.classList.remove("is-scroll-sequenced");
+        clearValuesItemState();
+      };
+
+      const enableValuesSequence = () => {
+        if (!valuesList || valuesItems.length < 2) return;
+
+        valuesSequenceEnabled = true;
+        valuesList.classList.add("is-scroll-sequenced");
+        updateValuesSequence();
+      };
+
+      const syncValuesSequenceMode = () => {
+        if (!valuesList || valuesItems.length < 2) return;
+
+        if (prefersReducedMotionQuery && prefersReducedMotionQuery.matches) {
+          disableValuesSequence();
+          return;
+        }
+
+        enableValuesSequence();
+      };
+
       inquiryTabs.forEach((tab) => {
         tab.addEventListener("click", () => {
           setInquiryType(tab.dataset.formType);
@@ -2544,8 +2975,23 @@
         });
       }
 
+      if (prefersReducedMotionQuery) {
+        const handleMotionChange = () => {
+          syncApproachSequenceMode();
+          syncValuesSequenceMode();
+        };
+
+        if (typeof prefersReducedMotionQuery.addEventListener === "function") {
+          prefersReducedMotionQuery.addEventListener("change", handleMotionChange);
+        } else if (typeof prefersReducedMotionQuery.addListener === "function") {
+          prefersReducedMotionQuery.addListener(handleMotionChange);
+        }
+      }
+
       setInquiryType("company");
       validateAttachmentSize();
+      syncApproachSequenceMode();
+      syncValuesSequenceMode();
 
       const updateHeaderVisibility = () => {
         if (!siteHeader) return;
@@ -2575,6 +3021,8 @@
           root.style.setProperty("--hero-scroll-progress", progress.toFixed(3));
           root.style.setProperty("--page-scroll-progress", pageProgress.toFixed(3));
           root.style.setProperty("--page-scroll-wave", pageWave.toFixed(3));
+          updateApproachSequence();
+          updateValuesSequence();
           updateHeaderVisibility();
           ticking = false;
         };
@@ -2593,6 +3041,8 @@
         root.style.setProperty("--hero-scroll-progress", "0");
         root.style.setProperty("--page-scroll-progress", "0");
         root.style.setProperty("--page-scroll-wave", "0");
+        updateApproachSequence();
+        updateValuesSequence();
         updateHeaderVisibility();
         window.addEventListener(
           "scroll",
@@ -2605,10 +3055,14 @@
             const pageWave = 1 - Math.abs(pageProgress * 2 - 1);
             root.style.setProperty("--page-scroll-progress", pageProgress.toFixed(3));
             root.style.setProperty("--page-scroll-wave", pageWave.toFixed(3));
+            updateApproachSequence();
+            updateValuesSequence();
             updateHeaderVisibility();
           },
           { passive: true }
         );
+        window.addEventListener("resize", updateApproachSequence);
+        window.addEventListener("resize", updateValuesSequence);
       }
     </script>
   </body>

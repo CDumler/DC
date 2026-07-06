@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Datenschutzhinweise von SDS. zur Verarbeitung personenbezogener Daten."
+      content="Datenschutzhinweise von D.ONE zur Verarbeitung personenbezogener Daten."
     />
-    <title>Datenschutz | SDS.</title>
+    <title>Datenschutz | d.one</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,6 +24,7 @@
         --line: #e8dfd2;
         --surface: #fffdf9;
         --accent: #bfa37a;
+        --accent-deep: #a98b62;
       }
 
       * {
@@ -59,17 +60,55 @@
 
       .brand {
         display: inline-flex;
-        align-items: baseline;
-        gap: 0.14rem;
+        align-items: center;
         color: var(--ink-soft);
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
+        line-height: 1;
         text-decoration: none;
       }
 
-      .brand .d {
-        color: var(--accent);
+      .logo {
+        font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+        font-size: clamp(0.92rem, 1.15vw, 1.04rem);
+        letter-spacing: 0;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        color: inherit;
+        white-space: nowrap;
+      }
+
+      .logo-d,
+      .logo-one {
+        font-weight: 500;
+        letter-spacing: 0.09em;
+        line-height: 1;
+      }
+
+      .logo-one {
+        margin-left: 1px;
+      }
+
+      .logo-dot {
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        margin-left: 8px;
+        margin-right: 11px;
+        border-radius: 50%;
+        background-color: var(--accent);
+        position: relative;
+        top: 0;
+        flex-shrink: 0;
+        transform-origin: center;
+        transition:
+          transform 0.2s ease,
+          background-color 0.2s ease;
+      }
+
+      .brand:hover .logo-dot,
+      .brand:focus-visible .logo-dot {
+        transform: scale(1.15);
+        background-color: var(--accent-deep);
       }
 
       .back {
@@ -133,12 +172,52 @@
         border-top: 1px solid rgba(191, 163, 122, 0.24);
         padding-top: 0.9rem;
       }
+
+      .page-return {
+        margin-top: 1.35rem;
+        display: flex;
+        justify-content: center;
+      }
+
+      .return-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.7rem 1.08rem;
+        border-radius: 999px;
+        border: 1px solid rgba(191, 163, 122, 0.5);
+        background: linear-gradient(165deg, #fffcf7 0%, #fff8ec 100%);
+        color: #334155;
+        font-size: 0.92rem;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 10px 24px -22px rgba(15, 23, 42, 0.5);
+        transition:
+          transform 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          color 0.2s ease;
+      }
+
+      .return-home:hover,
+      .return-home:focus-visible {
+        transform: translateY(-1px);
+        border-color: rgba(169, 139, 98, 0.72);
+        color: var(--ink-soft);
+        box-shadow: 0 16px 30px -24px rgba(15, 23, 42, 0.44);
+      }
     </style>
   </head>
   <body>
     <header class="topbar">
       <div class="container topbar-row">
-        <a class="brand" href="./index.html">S<span class="d">D</span>S.</a>
+        <a class="brand" href="./index.html" aria-label="D.ONE Startseite">
+          <span class="logo">
+            <span class="logo-d">D</span>
+            <span class="logo-dot" aria-hidden="true"></span>
+            <span class="logo-one">ONE</span>
+          </span>
+        </a>
         <a class="back" href="./index.html">Zurück zur Startseite</a>
       </div>
     </header>
@@ -159,7 +238,7 @@
             <h2>2. Verantwortlicher</h2>
             <p>
               Christian Dumler<br />
-              SDS. Dumler Solutions<br />
+              D.ONE Dumler Solutions<br />
               Lupinenweg 61<br />
               61118 Bad Vilbel<br />
               Deutschland<br /><br />
@@ -264,6 +343,13 @@
             <p>Stand: März 2026</p>
           </div>
         </section>
+
+        <div class="page-return">
+          <a class="return-home" href="./index.html">
+            <span aria-hidden="true">←</span>
+            Zur Hauptseite
+          </a>
+        </div>
       </div>
     </main>
   </body>
